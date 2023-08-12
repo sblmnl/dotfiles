@@ -32,7 +32,7 @@ cp -r ~/.config/polybar .config/
 
 # rofi
 if [ ! -d ".local/share/rofi/themes" ]; then
-    mkdir .local/share/rofi/themes
+    mkdir -p .local/share/rofi/themes
 fi
 
 cp -r ~/.config/rofi .config/
