@@ -79,8 +79,16 @@ alias vpn-on="mullvad lockdown-mode set on && mullvad connect"
 alias vpn-off="mullvad lockdown-mode set off && mullvad disconnect"
 
 # appgate on/off
-alias appgate-on="svc start appgatedriver"
-alias appgate-off="svc stop appgatedriver && killall Appgate"
+alias appgate-on="sudo svc start appgatedriver"
+alias appgate-off="sudo svc stop appgatedriver && killall Appgate"
+
+#   _____         __             _          __  _
+#  / ___/_ _____ / /____  __ _  (_)__ ___ _/ /_(_)__  ___
+# / /__/ // (_-</ __/ _ \/  ' \/ /_ // _ `/ __/ / _ \/ _ \
+# \___/\_,_/___/\__/\___/_/_/_/_//__/\_,_/\__/_/\___/_//_/
+
+# print message of the day
+cat ~/.motd/$(ls ~/.motd  | shuf -n 1)
 
 #    __________ __
 #   / __/ __/ // /
