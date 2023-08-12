@@ -40,3 +40,10 @@ cp -r ~/.local/share/rofi/themes .local/share/rofi/themes/
 
 # neofetch
 cp -r ~/.config/neofetch .config/
+
+# motds
+if [ ! -d ".motd" ]; then
+    mkdir .motd
+fi
+
+cp -r ~/.motd .
