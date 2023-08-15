@@ -39,14 +39,6 @@ source "$OSH"/oh-my-bash.sh
 
 export PATH=$PATH:/home/$USER/.local/bin
 
-#    ___      ___          ____    ___
-#   / _ \___ / _/__ ___ __/ / /_  / _ | ___  ___  ___
-#  / // / -_) _/ _ `/ // / / __/ / __ |/ _ \/ _ \(_-<
-# /____/\__/_/ \_,_/\_,_/_/\__/ /_/ |_/ .__/ .__/___/
-#                                    /_/  /_/
-
-export BROWSER='/usr/bin/firefox-esr'
-
 #  _   __         _      __   __
 # | | / /__ _____(_)__ _/ /  / /__ ___
 # | |/ / _ `/ __/ / _ `/ _ \/ / -_|_-<
@@ -69,7 +61,7 @@ alias svc="sudo systemctl"
 # docker
 alias dc="docker compose"
 alias dps="docker ps -a"
-alias dwipe="docker stop \$(docker ps -a -q); docker rm -f \$(docker ps -a -q); docker rmi -f \$(docker images -a -q); docker volume rm -f \$(docker volume ls -q)"
+alias dnuke="docker stop \$(docker ps -a -q); docker rm -f \$(docker ps -a -q); docker rmi -f \$(docker images -a -q); docker volume rm -f \$(docker volume ls -q)"
 
 # sanitize
 alias sanitize="sudo svc stop plexmediaserver; killall librewolf; killall firefox-esr; killall brave-browser"
