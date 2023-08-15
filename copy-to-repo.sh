@@ -9,7 +9,7 @@ if [ ! -d ".local" ]; then
     mkdir .local
 fi
 
-# xprofile
+# profile
 cp ~/.profile .
 
 # bashrc
