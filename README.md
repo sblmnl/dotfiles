@@ -1,8 +1,8 @@
 # sblmnl's dotfiles
 
-Branch: `debian-bookworm_i3-gaps_catpuccin`
-
 ![Screenshot](screenshot.png)
+
+[Branch: `debian-bookworm_i3-gaps_catpuccin`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3-gaps_catpuccin)
 
 ## Instructions
 
