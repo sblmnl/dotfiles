@@ -2,7 +2,7 @@
 
 ![Screenshot](screenshot.png)
 
-Branch: [`debian-bookworm_i3-gaps_catpuccin`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3-gaps_catpuccin)
+Branch: [`debian-bookworm_i3_catppuccin`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3_catppuccin)
 
 ## Instructions
 
