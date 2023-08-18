@@ -68,6 +68,9 @@ tar cvzf .themes.tar.gz ~/.themes
 # icons
 tar cvzf .icons.tar.gz ~/.icons
 
+# wallpapers
+tar cvzf .wallpapers.tar.gz ~/.wallpapers
+
 # gtk
 cp -r ~/.config/gtk-2.0 .config/
 cp -r ~/.config/gtk-3.0 .config/
