@@ -47,3 +47,28 @@ if [ ! -d ".motd" ]; then
 fi
 
 cp -r ~/.motd .
+
+# cmus
+if [ ! -d ".config/cmus" ]; then
+    mkdir .config/cmus
+fi
+
+cp ~/.config/cmus/rc .config/cmus/
+cp ~/.config/cmus/*.theme .config/cmus/
+
+# neovim
+cp -r ~/.config/nvim .config/
+
+# fonts
+tar cvzf .fonts.tar.gz ~/.fonts
+
+# themes
+tar cvzf .themes.tar.gz ~/.themes
+
+# icons
+tar cvzf .icons.tar.gz ~/.icons
+
+# gtk
+cp -r ~/.config/gtk-2.0 .config/
+cp -r ~/.config/gtk-3.0 .config/
+rm .config/gtk-3.0/bookmarks

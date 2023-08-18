@@ -12,7 +12,7 @@ esac
 
 export OSH=/home/$USER/.oh-my-bash
 
-OSH_THEME="rr"
+OSH_THEME="cupcake"
 OMB_USE_SUDO=true
 
 completions=(
@@ -71,8 +71,12 @@ alias vpn-on="mullvad lockdown-mode set on && mullvad connect"
 alias vpn-off="mullvad lockdown-mode set off && mullvad disconnect"
 
 # appgate on/off
-alias appgate-on="sudo svc start appgatedriver"
-alias appgate-off="sudo svc stop appgatedriver && killall Appgate"
+alias appgate-on="sudo systemctl start appgatedriver"
+alias appgate-off="sudo systemctl stop appgatedriver && killall Appgate"
+
+# apps
+alias music="cmus"
+alias calendar="calcurse"
 
 #   _____         __             _          __  _
 #  / ___/_ _____ / /____  __ _  (_)__ ___ _/ /_(_)__  ___
