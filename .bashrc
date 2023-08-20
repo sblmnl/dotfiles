@@ -12,7 +12,7 @@ esac
 
 export OSH=/home/$USER/.oh-my-bash
 
-OSH_THEME="rr"
+OSH_THEME="sexy"
 OMB_USE_SUDO=true
 
 completions=(
