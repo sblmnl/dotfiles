@@ -15,5 +15,5 @@ configuration{
     font: "Hurmit Nerd Font 10";
 }
 
-@theme "catppuccin-mocha"
+@theme "gruvbox-dark"
 

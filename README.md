@@ -2,7 +2,7 @@
 
 ![Screenshot](screenshot.png)
 
-Branch: [`debian-bookworm_i3_catppuccin`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3_catppuccin)
+Branch: [`debian-bookworm_i3_gruvbox`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3_gruvbox)
 
 ## Instructions
 
@@ -19,7 +19,7 @@ Get dotfiles for a specific branch:
 | **Component**       | **Product**           |
 |---------------------|-----------------------|
 | **OS**              | Debian 12 (bookworm)  |
-| **Shell**           | Bash (Oh My Bash: rr) |
+| **Shell**           | Bash (Oh My Bash)     |
 | **Display Manager** | Ly                    |
 | **DE/WM**           | i3                    |
 | **Compositor**      | Picom                 |
