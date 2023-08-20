@@ -12,7 +12,7 @@ esac
 
 export OSH=/home/$USER/.oh-my-bash
 
-OSH_THEME="cupcake"
+OSH_THEME="rr"
 OMB_USE_SUDO=true
 
 completions=(
@@ -73,6 +73,16 @@ alias vpn-off="mullvad lockdown-mode set off && mullvad disconnect"
 # appgate on/off
 alias appgate-on="sudo systemctl start appgatedriver"
 alias appgate-off="sudo systemctl stop appgatedriver && killall Appgate"
+
+# install/uninstall apt packages
+alias aptin="sudo apt install"
+alias aptun="sudo apt remove --autoremove --purge"
+
+# set wallpaper
+alias setwal="feh --bg-fill"
+
+# get new motd
+alias motd="clear && cat ~/.motd/\$(ls ~/.motd  | shuf -n 1)"
 
 # apps
 alias music="cmus"
