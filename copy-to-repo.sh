@@ -36,7 +36,7 @@ if [ ! -d ".local/share/rofi/themes" ]; then
 fi
 
 cp -r ~/.config/rofi .config/
-cp -r ~/.local/share/rofi/themes .local/share/rofi/themes/
+cp -r ~/.local/share/rofi/themes .local/share/rofi/
 
 # neofetch
 cp -r ~/.config/neofetch .config/
