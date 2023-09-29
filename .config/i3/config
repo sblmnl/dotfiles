@@ -21,6 +21,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# monitors
+set $left "DP-2"
+set $right "DP-4"
+
 #    ____        _      __    
 #   / __/_______(_)__  / /____
 #  _\ \/ __/ __/ / _ \/ __(_-<
@@ -37,12 +41,15 @@ exec_always --no-startup-id picom --experimental-backends
 exec_always --no-startup-id autotiling
 
 # polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# login script
+exec --no-startup-id ~/.config/i3/on-login.sh
 
 #  _      ___         __             
 # | | /| / (_)__  ___/ /__ _    _____
 # | |/ |/ / / _ \/ _  / _ \ |/|/ (_-<
-# |__/|__/_/_//_/\_,_/\___/__,__/___/                                    
+# |__/|__/_/_//_/\_,_/\___/__,__/___/
 
 # borders
 for_window [class=".*"] border pixel 2
@@ -54,26 +61,8 @@ gaps outer 0
 # font
 font pango:Hurmit Nerd Font 8
 
-# colors
-set $base #282828
-set $text #fbf1c7
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-set $lightgray #bdae93
-
-# target                 title     bg    text   indicator  border
-client.focused           $gray     $base $text  $text      $text
-client.focused_inactive  $aqua     $base $text  $base      $base
-client.unfocused         $gray     $base $text  $base      $base
-client.urgent            $red      $base $red   $red       $red
-client.placeholder       $gray     $base $text  $base      $base
-client.background        $bg
+# theme
+include ~/.config/i3/theme
 
 #    __ __         __   _         __  
 #   / //_/__ __ __/ /  (_)__  ___/ /__
@@ -93,23 +82,49 @@ bindsym XF86AudioPause exec --no-startup-id playerctl play-pause && $refresh_i3s
 bindsym XF86AudioNext exec --no-startup-id playerctl next && $refresh_i3status
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous && $refresh_i3status
 
-# start a terminal
+# open terminal
 bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec kitty su -
+
+# open file browser
+bindsym $mod+space exec thunar
+
+# open code editor
+bindsym $mod+semicolon exec codium
+bindsym $mod+Shift+semicolon exec ~/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh
+
+# open process manager
+bindsym $mod+p exec kitty htop
+
+# open audio control panel
+bindsym $mod+a exec pavucontrol
+
+# open web browser
+bindsym $mod+b exec librewolf
+bindsym $mod+Shift+b exec librewolf --private-window
+bindsym $mod+n exec brave-browser
+bindsym $mod+Shift+n exec brave-browser --incognito
+bindsym $mod+m exec firefox-esr
+bindsym $mod+Shift+m exec firefox-esr --private-window
+
+# open app launcher
+bindsym $mod+d exec "rofi -modi drun,run -show drun"
+
+# open zoom
+bindsym $mod+z exec zoom
+
+# take screenshot
+bindsym Print exec flameshot full -c
+bindsym Ctrl+Print exec flameshot screen -c
 
 # kill focused window
 bindsym $mod+q kill
-
-# start rofi
-bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 
 # change window focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move tiling windows by dragging
-tiling_drag modifier titlebar
 
 # move floating windows by dragging
 floating_modifier $mod
@@ -120,29 +135,11 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # toggle split
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -168,36 +165,18 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
+# move workspaces between monitors
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Right move workspace to output right
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# kill all applications
+bindsym $mod+Shift+Ctrl+q xdotool search "" windowkill %@ --maxdepth 1
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
+# reboot
+bindsym $mod+Shift+Ctrl+r kitty sudo reboot
