@@ -1,8 +1,10 @@
 # sblmnl's dotfiles
 
-![Screenshot](screenshot.png)
+| Gruvbox         | Catppuccin              |
+|-----------------|-------------------------|
+![](gruvbox.png)  |  ![](catppuccin.png)
 
-Branch: [`debian-bookworm_i3_gruvbox`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3_gruvbox)
+Branch: [`debian-bookworm_i3`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3)
 
 ## Instructions
 
@@ -22,7 +24,6 @@ Get dotfiles for a specific branch:
 | **Shell**           | Bash (Oh My Bash)     |
 | **Display Manager** | Ly                    |
 | **DE/WM**           | i3                    |
-| **Compositor**      | Picom                 |
 | **Terminal**        | kitty                 |
 | **Bar**             | Polybar               |
 | **Launcher**        | Rofi                  |

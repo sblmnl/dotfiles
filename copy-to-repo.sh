@@ -9,6 +9,10 @@ if [ ! -d ".local" ]; then
     mkdir .local
 fi
 
+if [ ! -d ".rice" ]; then
+    mkdir .rice
+fi
+
 # profile
 cp ~/.profile .
 
@@ -20,9 +24,6 @@ cp ~/.xprofile .
 
 # i3
 cp -r ~/.config/i3 .config/
-
-# picom
-cp ~/.config/picom.conf .config/
 
 # kitty
 cp -r ~/.config/kitty .config/
@@ -40,13 +41,6 @@ cp -r ~/.local/share/rofi/themes .local/share/rofi/
 
 # neofetch
 cp -r ~/.config/neofetch .config/
-
-# motds
-if [ ! -d ".motd" ]; then
-    mkdir .motd
-fi
-
-cp -r ~/.motd .
 
 # cmus
 if [ ! -d ".config/cmus" ]; then
@@ -69,9 +63,12 @@ tar cvzf .themes.tar.gz ~/.themes
 tar cvzf .icons.tar.gz ~/.icons
 
 # wallpapers
-tar cvzf .wallpapers.tar.gz ~/.wallpapers
+tar cvzf .wal.tar.gz ~/.wal
 
 # gtk
 cp -r ~/.config/gtk-2.0 .config/
 cp -r ~/.config/gtk-3.0 .config/
-rm .config/gtk-3.0/bookmarks
+rm -rf .config/gtk-3.0/bookmarks
+
+# rice scripts
+cp -r ~/.rice ./
