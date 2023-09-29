@@ -1,7 +1,8 @@
 # sblmnl's dotfiles
 
-![Gruvbox](gruvbox.png)
-![Catppuccin](catpuccin.png)
+| Gruvbox         | Catppuccin              |
+|-----------------|-------------------------|
+![](gruvbox.png)  |  ![](catppuccin.png)
 
 Branch: [`debian-bookworm_i3`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3)
 
