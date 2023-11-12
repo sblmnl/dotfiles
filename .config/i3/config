@@ -21,6 +21,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# monitors
+set $left "DP-2"
+set $right "DP-4"
+
 #    ____        _      __    
 #   / __/_______(_)__  / /____
 #  _\ \/ __/ __/ / _ \/ __(_-<
@@ -29,9 +33,6 @@ set $ws10 "10"
 
 # auto screen lock
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# compositor
-exec_always --no-startup-id picom --experimental-backends
 
 # autotiling
 exec_always --no-startup-id autotiling
@@ -48,7 +49,7 @@ exec --no-startup-id ~/.config/i3/on-login.sh
 # |__/|__/_/_//_/\_,_/\___/__,__/___/
 
 # borders
-for_window [class=".*"] border pixel 2
+# for_window [class=".*"] border pixel 2
 
 # gaps
 gaps inner 16
@@ -79,39 +80,39 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next && $refresh_i3status
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous && $refresh_i3status
 
 # open terminal
-bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec kitty su -
+bindsym $mod+Return exec --no-startup-id kitty
+bindsym $mod+Shift+Return exec --no-startup-id kitty su -
 
 # open file browser
-bindsym $mod+space exec thunar
+bindsym $mod+space exec --no-startup-id thunar
 
 # open code editor
-bindsym $mod+semicolon exec codium
-bindsym $mod+Shift+semicolon exec ~/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh
+bindsym $mod+semicolon exec --no-startup-id codium
+bindsym $mod+Shift+semicolon exec --no-startup-id ~/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh
 
 # open process manager
-bindsym $mod+p exec kitty htop
+bindsym $mod+p exec --no-startup-id kitty htop
 
 # open audio control panel
-bindsym $mod+a exec pavucontrol
+bindsym $mod+a exec --no-startup-id pavucontrol
 
 # open web browser
-bindsym $mod+b exec librewolf
-bindsym $mod+Shift+b exec librewolf --private-window
-bindsym $mod+n exec brave-browser
-bindsym $mod+Shift+n exec brave-browser --incognito
-bindsym $mod+m exec firefox-esr
-bindsym $mod+Shift+m exec firefox-esr --private-window
+bindsym $mod+b exec --no-startup-id librewolf
+bindsym $mod+Shift+b exec --no-startup-id librewolf --private-window
+bindsym $mod+n exec --no-startup-id brave-browser
+bindsym $mod+Shift+n exec --no-startup-id brave-browser --incognito
+bindsym $mod+m exec --no-startup-id firefox-esr
+bindsym $mod+Shift+m exec --no-startup-id firefox-esr --private-window
 
 # open app launcher
-bindsym $mod+d exec "rofi -modi drun,run -show drun"
+bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun"
 
 # open zoom
-bindsym $mod+z exec zoom
+bindsym $mod+z exec --no-startup-id zoom
 
 # take screenshot
-bindsym Print exec flameshot full -c
-bindsym Ctrl+Print exec flameshot screen -c
+bindsym Print exec --no-startup-id flameshot full -c
+bindsym Ctrl+Print exec --no-startup-id flameshot screen -c
 
 # kill focused window
 bindsym $mod+q kill
@@ -121,6 +122,14 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+
+# change monitor focus
+bindsym $mod+Ctrl+Left focus output left
+bindsym $mod+Ctrl+Right focus output right
+
+# switch between workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev 
 
 # move floating windows by dragging
 floating_modifier $mod
@@ -136,6 +145,9 @@ bindsym $mod+f fullscreen toggle
 
 # toggle split
 bindsym $mod+e layout toggle split
+
+# enable tabbed layout
+bindsym $mod+t layout tabbed
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -162,8 +174,8 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # move workspaces between monitors
-bindsym $mod+Ctrl+Left move workspace to output left
-bindsym $mod+Ctrl+Right move workspace to output right
+bindsym $mod+Ctrl+Shift+Left move workspace to output left
+bindsym $mod+Ctrl+Shift+Right move workspace to output right
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart

@@ -1,19 +1,14 @@
 set $base #282828
 set $text #fbf1c7
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-set $lightgray #bdae93
+set $urgent #cc241d
+set $focused #689d68
+set $inactive #a89984
+set $unfocused #a89984
 
-# target                 title     bg    text   indicator  border
-client.focused           $gray     $base $text  $text      $text
-client.focused_inactive  $aqua     $base $text  $base      $base
-client.unfocused         $gray     $base $text  $base      $base
-client.urgent            $red      $base $red   $red       $red
-client.placeholder       $gray     $base $text  $base      $base
+# target                 title      bg    text       indicator  border
+client.focused           $focused   $base $focused   $focused   $focused
+client.focused_inactive  $inactive  $base $text      $text      $inactive
+client.unfocused         $unfocused $base $unfocused $unfocused $unfocused
+client.urgent            $urgent    $base $urgent    $urgent    $urgent
+client.placeholder       $unfocused $base $text      $base      $base
 client.background        $bg

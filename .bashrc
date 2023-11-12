@@ -12,7 +12,7 @@ esac
 
 export OSH=/home/$USER/.oh-my-bash
 
-OSH_THEME="sexy"
+OSH_THEME="agnoster"
 OMB_USE_SUDO=true
 
 completions=(
@@ -58,33 +58,83 @@ export GPG_TTY=$(tty)
 alias ls="exa -alGx --color=always --group-directories-first --icons --git"
 alias lsdl="exa -alGx --color=always --group-directories-first --icons --git --sort=cr ~/Downloads"
 alias svc="sudo systemctl"
+alias rb="sudo reboot"
+alias sd="sudo poweroff"
 
 # apt
-alias add="sudo apt install"
-alias remove="sudo apt remove"
-alias update="sudo apt update && apt list --upgradeable"
-alias upgrade="sudo apt upgrade"
+alias in="sudo apt install"
+alias un="sudo apt remove"
+alias up="sudo apt update && apt list --upgradeable"
+alias ug="sudo apt upgrade"
+
+# github
+alias gh="ssh-add ~/.ssh/github"
+
+# git
+alias g="git"
+alias gs="git status"
+alias gcl="git clone"
+alias gc="git commit"
+alias ga="git add"
+alias gph="git push"
+alias gpl="git pull"
+alias gch="git checkout"
+alias gb="git branch"
+alias gf="git fetch"
+alias gra="git remote add"
+alias grd="git remote remove"
 
 # docker
+alias d="docker"
+alias docker-compose="docker compose"
 alias dc="docker compose"
-alias dps="watch -n 2 docker ps -a"
+alias dcp="docker compose --profile"
+alias dps="docker ps -a"
+alias dpsw="watch -n 2 docker ps -a"
 alias dnuke="docker stop \$(docker ps -a -q); docker rm -f \$(docker ps -a -q); docker rmi -f \$(docker images -a -q); docker volume rm -f \$(docker volume ls -q)"
 
+## containers
+alias dstop="docker stop"
+alias drm="docker rm"
+alias dr!="docker rm -f"
+alias drm*="docker rm \$(docker ps -a -q)"
+alias drm*!="docker rm -f \$(docker ps -a -q)"
+
+## images
+alias dlsi="docker image ls"
+alias drmi="docker rmi"
+alias drmi!="docker rmi -f"
+alias drmi*="docker rmi \$(docker images -a -q)"
+alias drmi*!="docker rmi -f \$(docker images -a -q)"
+
+## volumes
+alias dlsv="docker volume ls"
+alias drmv="docker volume rm"
+alias drmv!="docker volume rm -f"
+alias drmv*="docker volume rm \$(docker volume ls -q)"
+alias drmv*!="docker volume rm -f \$(docker volume ls -q)"
+
+# python
+alias py="python3"
+
 # vpn on/off
-alias connect="mullvad lockdown-mode set on && mullvad connect"
-alias disconnect="mullvad lockdown-mode set off && mullvad disconnect"
-alias reconnect="mullvad status && mullvad reconnect && sleep 2 && mullvad status"
+alias vpnc="mullvad lockdown-mode set on && mullvad connect"
+alias vpnd="mullvad lockdown-mode set off && mullvad disconnect"
+alias vpnr="mullvad reconnect"
 
 # appgate on/off
-alias appgate-on="sudo systemctl stop plexmediaserver && killall librewolf && killall brave-browser && mullvad lockdown-mode set off && mullvad disconnect && sudo systemctl start appgatedriver"
-alias appgate-off="sudo systemctl stop appgatedriver && killall Appgate"
+alias agon="sudo systemctl stop plexmediaserver && killall librewolf && killall brave-browser && mullvad lockdown-mode set off && mullvad disconnect && sudo systemctl start appgatedriver"
+alias agoff="sudo systemctl stop appgatedriver && killall Appgate"
 
 # set wallpaper
 alias setwal="feh --bg-fill"
 
+# get new motd
+alias motd="clear && cat ~/.motd/\$(ls ~/.motd  | shuf -n 1)"
+
 # apps
-alias music="cmus"
-alias calendar="calcurse"
+alias mus="cmus"
+alias cal="calcurse"
 
 #    __________ __
 #   / __/ __/ // /

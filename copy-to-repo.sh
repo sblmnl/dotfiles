@@ -50,9 +50,6 @@ fi
 cp ~/.config/cmus/rc .config/cmus/
 cp ~/.config/cmus/*.theme .config/cmus/
 
-# neovim
-cp -r ~/.config/nvim .config/
-
 # fonts
 tar cvzf .fonts.tar.gz ~/.fonts
 
