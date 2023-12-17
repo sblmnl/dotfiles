@@ -1,9 +1,9 @@
 # sblmnl's dotfiles
 
-|                  |                     |                     |
-|------------------|---------------------|---------------------|
-|                  | ![](cyberpunk.png)  |                     |
-| ![](gruvbox.png) | ![](catppuccin.png) | ![](everforest.png) |
+|                     |                  |                     |
+|---------------------|------------------|---------------------|
+| ![](cyberpunk.png)  | ![](gruvbox.png) | ![](everforest.png) |
+| ![](catppuccin.png) |                  |                     |
 
 Branch: [`debian-bookworm_i3`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3)
 
