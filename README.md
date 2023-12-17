@@ -2,8 +2,8 @@
 
 |                  |                     |                     |
 |------------------|---------------------|---------------------|
-| ![](gruvbox.png) | ![](catppuccin.png) | ![](everforest.png) |
 |                  | ![](cyberpunk.png)  |                     |
+| ![](gruvbox.png) | ![](catppuccin.png) | ![](everforest.png) |
 
 Branch: [`debian-bookworm_i3`](https://github.com/sblmnl/dotfiles/tree/debian-bookworm_i3)
 
