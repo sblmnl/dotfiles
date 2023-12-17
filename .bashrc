@@ -63,7 +63,7 @@ alias sd="sudo poweroff"
 
 # apt
 alias in="sudo apt install"
-alias un="sudo apt remove"
+alias un="sudo apt purge --autoremove"
 alias up="sudo apt update && apt list --upgradeable"
 alias ug="sudo apt upgrade"
 
@@ -72,17 +72,6 @@ alias gh="ssh-add ~/.ssh/github"
 
 # git
 alias g="git"
-alias gs="git status"
-alias gcl="git clone"
-alias gc="git commit"
-alias ga="git add"
-alias gph="git push"
-alias gpl="git pull"
-alias gch="git checkout"
-alias gb="git branch"
-alias gf="git fetch"
-alias gra="git remote add"
-alias grd="git remote remove"
 
 # docker
 alias d="docker"

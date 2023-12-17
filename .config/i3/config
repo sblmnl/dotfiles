@@ -101,8 +101,8 @@ bindsym $mod+b exec --no-startup-id librewolf
 bindsym $mod+Shift+b exec --no-startup-id librewolf --private-window
 bindsym $mod+n exec --no-startup-id brave-browser
 bindsym $mod+Shift+n exec --no-startup-id brave-browser --incognito
-bindsym $mod+m exec --no-startup-id firefox-esr
-bindsym $mod+Shift+m exec --no-startup-id firefox-esr --private-window
+bindsym $mod+m exec --no-startup-id firefox-esr --ProfileManager
+bindsym $mod+Shift+m exec --no-startup-id firefox-esr --ProfileManager --private-window
 
 # open app launcher
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun"
