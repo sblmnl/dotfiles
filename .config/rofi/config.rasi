@@ -15,4 +15,4 @@ configuration{
     font: "Hurmit Nerd Font 10";
 }
 
-@theme "cyberpunk"
+@theme "rose-pine"
