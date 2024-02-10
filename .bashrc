@@ -50,9 +50,6 @@ DOTNET_CLI_TELEMETRY_OPTOUT=1
 # gpg tty
 export GPG_TTY=$(tty)
 
-# motd theme
-MOTD_THEME=$(cat /home/$USER/.config/motd.txt)
-
 #    ___   ___
 #   / _ | / (_)__ ____ ___ ___
 #  / __ |/ / / _ `(_-</ -_|_-<
@@ -89,26 +86,27 @@ alias dnuke="docker stop \$(docker ps -a -q); docker rm -f \$(docker ps -a -q); 
 ## containers
 alias dstop="docker stop"
 alias drm="docker rm"
-alias dr!="docker rm -f"
-alias drm*="docker rm \$(docker ps -a -q)"
-alias drm*!="docker rm -f \$(docker ps -a -q)"
+alias drmf="docker rm -f"
+alias drma="docker rm \$(docker ps -a -q)"
+alias drmaf="docker rm -f \$(docker ps -a -q)"
 
 ## images
 alias dlsi="docker image ls"
 alias drmi="docker rmi"
-alias drmi!="docker rmi -f"
-alias drmi*="docker rmi \$(docker images -a -q)"
-alias drmi*!="docker rmi -f \$(docker images -a -q)"
+alias drmif="docker rmi -f"
+alias drmia="docker rmi \$(docker images -a -q)"
+alias drmiaf="docker rmi -f \$(docker images -a -q)"
 
 ## volumes
 alias dlsv="docker volume ls"
 alias drmv="docker volume rm"
-alias drmv!="docker volume rm -f"
-alias drmv*="docker volume rm \$(docker volume ls -q)"
-alias drmv*!="docker volume rm -f \$(docker volume ls -q)"
+alias drmvf="docker volume rm -f"
+alias drmva="docker volume rm \$(docker volume ls -q)"
+alias drmvaf="docker volume rm -f \$(docker volume ls -q)"
 
 # python
-alias py="python3"
+alias py="/home/$USER/.python/bin/python3"
+alias pip="/home/$USER/.python/pip"
 
 # vpn on/off
 alias vpnc="mullvad lockdown-mode set on && mullvad connect"
