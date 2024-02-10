@@ -9,11 +9,14 @@ lvextend -r -l +100%FREE /dev/system-vg/home
 # configure auto-mount for encrypted drive
 echo "/dev/disk/by-uuid/26529d89-8020-4fe5-84f1-c4a137e8786e /media/Data auto nosuid,nodev,nofail,x-gvfs-show 0 0" >> /etc/fstab
 echo "luks-88a6b901-6969-4f4f-a3c2-e91ec860d86b UUID=88a6b901-6969-4f4f-a3c2-e91ec860d86b /etc/luks-keys/luks-88a6b901-6969-4f4f-a3c2-e91ec860d86b nofail" >> /etc/crypttab
+
 read -p "Enter passphrase for /media/Data: " PASSWORD
+
 if [[ ! -d /etc/luks-keys ]]; then
     mkdir /etc/luks-keys
     chmod /etc/luks-keys 755
 fi
+
 echo -n "$PASSWORD" > /etc/luks-keys/luks-88a6b901-6969-4f4f-a3c2-e91ec860d86b
 unset PASSWORD
 
@@ -23,32 +26,30 @@ apt install -y software-properties-common
 apt-add-repository contrib non-free-firmware
 apt update && apt upgrade -y
 
-# prerequisites
-apt install -y build-essential libpam0g-dev libxcb-xkb-dev lsb-release gnupg pinentry-tty git curl wget apt-transport-https ca-certificates
+# install common packages
+apt install -y sudo build-essential lsb-release apt-transport-https ca-certificates
 
-# install basic utilities
-apt install -y \
-    sudo \
-    timeshift \
-    kitty \
-    thunar \
-    firefox-esr \
-    feh \
-    7zip \
-    unzip \
-    gnome-disk-utility \
-    qimgv \
-    vlc \
-    pulseaudio \
-    pavucontrol \
-    qbittorrent \
-    neofetch \
-    htop
+# install disk and backup utilities
+apt install -y timeshift gnome-disk-utility
 
-# install xorg, i3, rofi, and polybar
-apt install -y xorg i3 rofi polybar
+# install basic cli tools
+apt install -y gnupg pinentry-tty git curl wget 7zip unzip
+
+# install extra cli tools
+apt install -y neofetch exa htop feh ranger cmatrix nload dstat cmus calcurse
+
+# install basic apps
+apt install -y kitty thunar firefox-esr flameshot qimgv vlc qbittorrent
+
+# install pulseaudio
+apt install -y pulseaudio pavucontrol
+
+# install xorg, i3, rofi, polybar and picom
+apt install -y xorg i3 rofi polybar picom
 
 # install fairyglade/ly
+apt install -y libpam0g-dev libxcb-xkb-dev
+
 cd /tmp
 git clone --recurse-submodules https://github.com/fairyglade/ly
 cd ly
@@ -63,7 +64,7 @@ curl -fsSLo veracrypt-1.26.7-Debian-12-amd64.deb.sig https://launchpad.net/verac
 curl -fsSLo veracrypt-1.26.7-Debian-12-amd64.deb https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-12-amd64.deb
 gpg --verify veracrypt-1.26.7-Debian-12-amd64.deb.sig && dpkg -i veracrypt-1.26.7-Debian-12-amd64.deb
 apt --fix-broken install
-rm VeraCrypt_PGP_public_key.asc veracrypt-1.26.7-Debian-12-amd64.deb.sig veracrypt-1.26.7-Debian-12-amd64.deb
+rm VeraCrypt_PGP_public_key.asc veracrypt-1.26.7-Debian-12-amd64*
 
 # install mullvad
 curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc https://repository.mullvad.net/deb/mullvad-keyring.asc
