@@ -24,7 +24,7 @@ apt-add-repository contrib non-free-firmware
 apt update && apt upgrade -y
 
 # prerequisites
-apt install -y build-essential libpam0g-dev libxcb-xkb-dev lsb-release gnupg git curl wget apt-transport-https ca-certificates
+apt install -y build-essential libpam0g-dev libxcb-xkb-dev lsb-release gnupg pinentry-tty git curl wget apt-transport-https ca-certificates
 
 # install basic utilities
 apt install -y \
