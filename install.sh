@@ -2,8 +2,11 @@
 
 # configure lvm
 lvreduce -r -L 750G /dev/system-vg/home
-lvextend -r -l 128G /dev/system-vg/root
-lvextend -r -l 16G /dev/system-vg/swap_1
+lvextend -r -L 128G /dev/system-vg/root
+swapoff -v /dev/system-vg/swap_1
+lvresize /dev/system-vg/swap_1 -L 16G
+mkswap /dev/system-vg/swap_1
+swapon -va
 lvextend -r -l +100%FREE /dev/system-vg/home
 
 # configure auto-mount for encrypted drive
