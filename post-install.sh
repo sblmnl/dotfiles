@@ -3,30 +3,33 @@
 # install oh my bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
+# setup python virtual environment
+python3 -m venv ~/.python
+~/.python/bin/pip install autotiling
+
 # import dotfiles
-if [ ! -d "/home/$USER/.config" ]; then
-    mkdir /home/$USER/.config
-fi
+cp .bashrc ~/
+cp .profile ~/
+cp .xprofile ~/
 
-if [ ! -d "/home/$USER/.local" ]; then
-    mkdir /home/$USER/.local
-fi
+cp -r .config ~/
+cp -r .local ~/
+cp -r .rice ~/
 
-cp -r .config /home/$USER/.config
-cp -r .local /home/$USER/.local
-cp .rice /home/$USER/
+tar xvf .wal.tar.gz --strip-components=2 -C ~/
+tar xvf .fonts.tar.gz --strip-components=2 -C ~/
+tar xvf .icons.tar.gz --strip-components=2 -C ~/
+tar xvf .themes.tar.gz --strip-components=2 -C ~/
 
-cp .bashrc /home/$USER/
-cp .profile /home/$USER
-cp .xprofile /home/$USER/
-
-tar xvf .wal.tar.gz --strip-components=2 -C /home/$USER/
-tar xvf .fonts.tar.gz --strip-components=2 -C /home/$USER/
-tar xvf .icons.tar.gz --strip-components=2 -C /home/$USER/
-tar xvf .themes.tar.gz --strip-components=2 -C /home/$USER/
-
-# enable smartcard support
+# register smart card reader(s)
+firefox-esr && sleep 5 && killall firefox-esr
 pkcs11-register
 
+# install jetbrains toolbox
+curl -fsSLo jetbrains-toolbox-2.2.1.19765.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.2.1.19765.tar.gz
+tar xvf jetbrains-toolbox-2.2.1.19765.tar.gz
+./jetbrains-toolbox-2.2.1.19765/jetbrains-toolbox && sleep 10 && killall jetbrains-toolbox
+rm -rf jetbrains-toolbox-2.2.1.19765*
+
 # clean up
-rm -rf dotfiles
+sudo rm -rf ~/dotfiles
