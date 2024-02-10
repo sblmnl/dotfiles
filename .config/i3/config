@@ -34,6 +34,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # autotiling
 exec_always --no-startup-id ~/.python/bin/autotiling
 
+# picom
+exec --no-startup-id picom -b
+
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
