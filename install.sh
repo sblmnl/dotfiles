@@ -44,8 +44,8 @@ apt install -y neofetch exa htop feh ranger cmatrix nload dstat cmus calcurse
 # install basic apps
 apt install -y kitty thunar firefox-esr flameshot qimgv vlc qbittorrent
 
-# install pulseaudio
-apt install -y pulseaudio pavucontrol
+# install audio packages
+apt install -y pulseaudio pavucontrol playerctl
 
 # install xorg, i3, rofi, polybar and picom
 apt install -y xorg i3 rofi polybar picom
