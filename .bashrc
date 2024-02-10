@@ -50,13 +50,17 @@ DOTNET_CLI_TELEMETRY_OPTOUT=1
 # gpg tty
 export GPG_TTY=$(tty)
 
+# motd theme
+MOTD_THEME=$(cat /home/$USER/.config/motd.txt)
+
 #    ___   ___
 #   / _ | / (_)__ ____ ___ ___
 #  / __ |/ / / _ `(_-</ -_|_-<
 # /_/ |_/_/_/\_,_/___/\__/___/
 
-alias ls="exa -alGx --color=always --group-directories-first --icons --git"
-alias lsdl="exa -alGx --color=always --group-directories-first --icons --git --sort=cr ~/Downloads"
+alias ls="exa -lGx --color=always --group-directories-first --icons --git"
+alias lsdl="exa -lGx --color=always --group-directories-first --icons --git --sort=cr /home/$USER/Downloads"
+alias cddl="cd /home/$USER/Downloads"
 alias svc="sudo systemctl"
 alias rb="sudo reboot"
 alias sd="sudo poweroff"
@@ -119,7 +123,7 @@ alias agoff="sudo systemctl stop appgatedriver && killall Appgate"
 alias setwal="feh --bg-fill"
 
 # get new motd
-alias motd="clear && cat ~/.motd/\$(ls ~/.motd  | shuf -n 1)"
+alias motd="clear && cat ~/.motd/$MOTD_THEME/\$(\ls ~/.motd/$MOTD_THEME  | shuf -n 1)"
 
 # apps
 alias mus="cmus"
@@ -132,3 +136,4 @@ alias cal="calcurse"
 
 # start ssh-agent
 [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null
+
