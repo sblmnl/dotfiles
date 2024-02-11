@@ -19,7 +19,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 # monitors
-set $left "DP-1"
+set $left "DP-4"
 set $right "DP-2"
 
 #    ____        _      __    
@@ -48,11 +48,8 @@ exec --no-startup-id ~/.config/i3/on-login.sh
 # | |/ |/ / / _ \/ _  / _ \ |/|/ (_-<
 # |__/|__/_/_//_/\_,_/\___/__,__/___/
 
-# borders
-# for_window [class=".*"] border pixel 2
-
 # gaps
-gaps inner 16
+gaps inner 8
 gaps outer 0
 
 # font
