@@ -26,7 +26,7 @@ unset PASSWORD
 # add contrib and non-free-firmware apt repositories
 apt update && apt upgrade -y
 apt install -y software-properties-common
-apt-add-repository contrib non-free-firmware
+apt-add-repository contrib non-free non-free-firmware
 apt update && apt upgrade -y
 
 # install common packages
@@ -39,7 +39,7 @@ apt install -y timeshift gnome-disk-utility
 apt install -y gnupg pinentry-tty git curl wget 7zip unzip
 
 # install extra cli tools
-apt install -y neofetch exa htop feh ranger cmatrix nload dstat cmus calcurse
+apt install -y neofetch exa htop feh ranger cmatrix nload dstat cmus calcurse calc jq bc
 
 # install basic apps
 apt install -y kitty thunar firefox-esr flameshot qimgv vlc qbittorrent
@@ -142,7 +142,7 @@ apt update && apt install -y dbeaver-ce
 # install insomnia
 curl -1sLf \
   'https://packages.konghq.com/public/insomnia/setup.deb.sh' \
-  | -E distro=ubuntu codename=focal bash
+  | sudo -E distro=ubuntu codename=focal bash
 
 apt update && apt install -y insomnia
 
@@ -188,11 +188,18 @@ EOF
 
 update-grub
 
+# enable time sync w/ ntp
+apt install systemd-timesyncd
+systemctl enable systemd-timesyncd
+
 # add me to sudoers
 usermod -aG sudo jared
 
 # move dotfiles to my home folder
 mv ~/dotfiles /home/jared/
+
+# install nvidia
+apt install -y nvidia-driver
 
 # reboot
 reboot now
