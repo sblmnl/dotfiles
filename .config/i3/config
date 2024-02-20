@@ -35,7 +35,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always --no-startup-id ~/.python/bin/autotiling
 
 # picom
-exec --no-startup-id picom -b
+exec --no-startup-id picom --config ~/.config/picom.conf -b
 
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -145,6 +145,9 @@ bindsym $mod+e layout toggle split
 
 # enable tabbed layout
 bindsym $mod+t layout tabbed
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

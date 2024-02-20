@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill "/home/$USER/.rice/wallpapers/merica_rose-pine_2560x1440.png"

@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill "/home/$USER/.rice/wallpapers/merica_gruvbox_2560x1440.png"
