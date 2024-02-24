@@ -39,6 +39,9 @@ fi
 cp -r ~/.config/rofi ../.config/
 cp -r ~/.local/share/rofi/themes ../.local/share/rofi/
 
+# dunst
+cp -r ~/.config/dunst ../.config/
+
 # neofetch
 cp -r ~/.config/neofetch ../.config/
 
