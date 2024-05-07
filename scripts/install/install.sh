@@ -32,32 +32,35 @@ apt install -y software-properties-common
 apt-add-repository contrib non-free non-free-firmware
 apt update && apt upgrade -y
 
-# install common packages
+# set apt keyring permissions
+install -m 0755 -d /etc/apt/keyrings
+
+# common packages
 apt install -y sudo build-essential lsb-release apt-transport-https ca-certificates
 
-# install disk and backup utilities
+# disk and backup utilities
 apt install -y timeshift gnome-disk-utility
 
-# install basic cli tools
+# basic cli tools
 apt install -y gnupg pinentry-tty git curl wget 7zip unzip python3-full
 
-# install extra cli tools
+# extra cli tools
 apt install -y neofetch exa htop feh ranger cmatrix nload dstat cmus calcurse calc jq bc
 
-# install basic apps
-apt install -y kitty thunar firefox-esr flameshot qimgv vlc qbittorrent
+# basic apps
+apt install -y kitty thunar flameshot qimgv vlc qbittorrent
 
-# install extra apps
+# extra apps
 apt install -y gimp libreoffice-calc libreoffice-writer libreoffice-draw gpick
 apt autoremove --purge -y zathura
 
-# install audio packages
+# audio packages
 apt install -y pulseaudio pavucontrol playerctl
 
-# install xorg, i3, rofi, polybar and picom
+# xorg, i3, rofi, polybar and picom
 apt install -y xorg i3 rofi polybar picom
 
-# install fairyglade/ly
+# fairyglade/ly
 apt install -y libpam0g-dev libxcb-xkb-dev
 
 cd /tmp
@@ -68,14 +71,14 @@ make install installsystemd
 systemctl enable ly.service
 cd .. && rm -rf ly
 
-# install dotnet sdk
+# dotnet sdk
 wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 
 apt update && apt install -y dotnet-sdk-8.0
 
-# install veracrypt
+# veracrypt
 curl -fsSLo VeraCrypt_PGP_public_key.asc https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc && gpg --import VeraCrypt_PGP_public_key.asc
 curl -fsSLo veracrypt-1.26.7-Debian-12-amd64.deb.sig https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-12-amd64.deb.sig
 curl -fsSLo veracrypt-1.26.7-Debian-12-amd64.deb https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-12-amd64.deb
@@ -83,13 +86,13 @@ gpg --verify veracrypt-1.26.7-Debian-12-amd64.deb.sig && dpkg -i veracrypt-1.26.
 apt --fix-broken install
 rm VeraCrypt_PGP_public_key.asc veracrypt-1.26.7-Debian-12-amd64*
 
-# install mullvad
+# mullvad
 curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc https://repository.mullvad.net/deb/mullvad-keyring.asc
 echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$( dpkg --print-architecture )] https://repository.mullvad.net/deb/stable $(lsb_release -cs) main" |\
   tee /etc/apt/sources.list.d/mullvad.list
 apt update && apt install -y mullvad-vpn
 
-# install librewolf
+# librewolf
 apt update
 
 distro=$(if echo " una bookworm vanessa focal jammy bullseye vera uma " | grep -q " $(lsb_release -sc) "; then lsb_release -sc; else echo focal; fi)
@@ -107,13 +110,34 @@ EOF
 
 apt update && apt install -y librewolf
 
-# install brave browser
+# brave browser
 curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" \
     | tee /etc/apt/sources.list.d/brave-browser-release.list
 
 apt update && apt install -y brave-browser
+
+# firefox
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+fingerprint_match=$(gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") exit 0; else exit 1}')
+
+if [ $fingerprint_match ]; then
+  echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+
+  echo '
+  Package: *
+  Pin: origin packages.mozilla.org
+  Pin-Priority: 1000
+  ' | tee /etc/apt/preferences.d/mozilla
+
+  apt update && apt install -y firefox
+else
+  rm /etc/apt/keyrings/packages.mozilla.org.asc
+fi
+
+unset fingerprint_match
 
 # signal
 wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
@@ -135,7 +159,6 @@ apt update && apt install -y virtualbox-7.0
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do apt remove -y $pkg; done
 
 apt update
-install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
 chmod a+r /etc/apt/keyrings/docker.asc
 
@@ -161,28 +184,28 @@ wget -O /usr/share/keyrings/dbeaver.gpg.key https://dbeaver.io/debs/dbeaver.gpg.
 echo "deb [signed-by=/usr/share/keyrings/dbeaver.gpg.key] https://dbeaver.io/debs/dbeaver-ce /" | tee /etc/apt/sources.list.d/dbeaver.list
 apt update && apt install -y dbeaver-ce
 
-# install insomnia
+# insomnia
 curl -1sLf \
   'https://packages.konghq.com/public/insomnia/setup.deb.sh' \
   | sudo -E distro=ubuntu codename=focal bash
 
 apt update && apt install -y insomnia
 
-# install spotify
+# spotify
 curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | tee /etc/apt/sources.list.d/spotify.list
 apt update && apt install spotify-client
 
-# install plex media server
-curl -fsSLo plexmediaserver_1.32.8.7639-fb6452ebf_amd64.deb \
-  https://downloads.plex.tv/plex-media-server-new/1.32.8.7639-fb6452ebf/debian/plexmediaserver_1.32.8.7639-fb6452ebf_amd64.deb
+# plex media server
+curl -fsSLo plexmediaserver.deb \
+  https://downloads.plex.tv/plex-media-server-new/1.40.2.8395-c67dce28e/debian/plexmediaserver_1.40.2.8395-c67dce28e_amd64.deb
 cat <<EOF > sha1sum.txt
-b6cf7edd9288c4188abf8cb237e2d8ba777447a3  plexmediaserver_1.32.8.7639-fb6452ebf_amd64.deb
+42d5901ea19c56c0e3e0d97eedaebe3ae3b057b0  plexmediaserver.deb
 EOF
-sha1sum -c sha1sum.txt --status && dpkg -i plexmediaserver_1.32.8.7639-fb6452ebf_amd64.deb
-rm sha1sum.txt plexmediaserver_1.32.8.7639-fb6452ebf_amd64.deb
+sha1sum -c sha1sum.txt --status && dpkg -i plexmediaserver.deb
+rm sha1sum.txt plexmediaserver.deb
 
-# install packages for smart card support
+# smart card support
 apt autoremove --purge -y cackey coolkey libckyapplet1 libckyapplet1-dev
 apt install -y pcsc-tools libccid libpcsc-perl libpcsclite1 pcscd opensc opensc-pkcs11 vsmartcard-vpcd libnss3-tools
 
