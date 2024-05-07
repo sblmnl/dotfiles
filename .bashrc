@@ -45,7 +45,7 @@ export PATH=$PATH:/home/$USER/.local/bin
 # |___/\_,_/_/ /_/\_,_/_.__/_/\__/___/
 
 # disable dotnet cli telemetry
-DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # gpg tty
 export GPG_TTY=$(tty)
@@ -69,7 +69,7 @@ alias up="sudo apt update && apt list --upgradeable"
 alias ug="sudo apt upgrade"
 
 # github
-alias gh="ssh-add ~/.ssh/github"
+alias gh="[ -z \"\$SSH_AUTH_SOCK\" ] && eval \"\$(ssh-agent -s)\" > /dev/null && ssh-add ~/.ssh/github"
 
 # git
 alias g="git"
@@ -126,12 +126,3 @@ alias motd="clear && cat ~/.motd/$MOTD_THEME/\$(\ls ~/.motd/$MOTD_THEME  | shuf 
 # apps
 alias mus="cmus"
 alias cal="calcurse"
-
-#    __________ __
-#   / __/ __/ // /
-#  _\ \_\ \/ _  /
-# /___/___/_//_/
-
-# start ssh-agent
-[ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null
-
