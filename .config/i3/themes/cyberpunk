@@ -1,7 +1,7 @@
-set $base #120B10
-set $text #FF4081
+set $base #120b10
+set $text #ff4081
 set $urgent #fec5e5
-set $focused #FF4081
+set $focused #ff4081
 set $inactive #890633
 set $unfocused #890633
 
