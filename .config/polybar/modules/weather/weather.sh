@@ -6,23 +6,6 @@
 
 source ~/.secrets/.openweathermap.env
 
-# Color Settings ______________________________________________________________
-
-COLOR_CLOUD="#606060"
-COLOR_THUNDER="#d3b987"
-COLOR_LIGHT_RAIN="#73cef4"
-COLOR_HEAVY_RAIN="#b3deef"
-COLOR_SNOW="#FFFFFF"
-COLOR_FOG="#606060"
-COLOR_TORNADO="#d3b987"
-COLOR_SUN="#ffc24b"
-COLOR_MOON="#FFFFFF"
-COLOR_ERR="#f43753"
-COLOR_WIND="#73cef4"
-COLOR_COLD="#b3deef"
-COLOR_HOT="#f43753"
-COLOR_NORMAL_TEMP="#FFFFFF"
-
 # Leave "" if you want the default polybar color
 COLOR_TEXT=""
 # Polybar settings ____________________________________________________________
@@ -130,7 +113,6 @@ function getData {
 function setIcons {
     if [ $WID -le 232 ]; then
         #Thunderstorm
-        ICON_COLOR=$COLOR_THUNDER
         if [ $DATE -ge $SUNRISE -a $DATE -le $SUNSET ]; then
             ICON=""
         else
@@ -138,7 +120,6 @@ function setIcons {
         fi
     elif [ $WID -le 311 ]; then
         #Light drizzle
-        ICON_COLOR=$COLOR_LIGHT_RAIN
         if [ $DATE -ge $SUNRISE -a $DATE -le $SUNSET ]; then
             ICON=""
         else
@@ -146,7 +127,6 @@ function setIcons {
         fi
     elif [ $WID -le 321 ]; then
         #Heavy drizzle
-        ICON_COLOR=$COLOR_HEAVY_RAIN
         if [ $DATE -ge $SUNRISE -a $DATE -le $SUNSET ]; then
             ICON=""
         else
@@ -154,7 +134,6 @@ function setIcons {
         fi
     elif [ $WID -le 531 ]; then
         #Rain
-        ICON_COLOR=$COLOR_HEAVY_RAIN
         if [ $DATE -ge $SUNRISE -a $DATE -le $SUNSET ]; then
             ICON=""
         else
@@ -162,40 +141,31 @@ function setIcons {
         fi
     elif [ $WID -le 622 ]; then
         #Snow
-        ICON_COLOR=$COLOR_SNOW
         ICON=""
     elif [ $WID -le 771 ]; then
         #Fog
-        ICON_COLOR=$COLOR_FOG
         ICON=""
     elif [ $WID -eq 781 ]; then
         #Tornado
-        ICON_COLOR=$COLOR_TORNADO
         ICON=""
     elif [ $WID -eq 800 ]; then
         #Clear sky
         if [ $DATE -ge $SUNRISE -a $DATE -le $SUNSET ]; then
-            ICON_COLOR=$COLOR_SUN
             ICON=""
         else
-            ICON_COLOR=$COLOR_MOON
             ICON=""
         fi
     elif [ $WID -eq 801 ]; then
         # Few clouds
         if [ $DATE -ge $SUNRISE -a $DATE -le $SUNSET ]; then
-            ICON_COLOR=$COLOR_SUN
             ICON=""
         else
-            ICON_COLOR=$COLOR_MOON
             ICON=""
         fi
     elif [ $WID -le 804 ]; then
         # Overcast
-        ICON_COLOR=$COLOR_CLOUD
         ICON=""
     else
-        ICON_COLOR=$COLOR_ERR
         ICON=""
     fi
     WIND=""
@@ -276,16 +246,16 @@ function setIcons {
     TEMP=`echo "$TEMP" | cut -d "." -f 1`
     
     if [ "$TEMP" -le $COLD_TEMP ]; then
-        TEMP="%{F$COLOR_COLD}%{T$TEMP_FONT_CODE}%{T-}%{F-} $COLOR_TEXT_BEGIN$TEMP%{T$TEMP_FONT_CODE}$TEMP_ICON%{T-}$COLOR_TEXT_END"
+        TEMP="%{T$TEMP_FONT_CODE}%{T-} $COLOR_TEXT_BEGIN$TEMP%{T$TEMP_FONT_CODE}$TEMP_ICON%{T-}$COLOR_TEXT_END"
     elif [ `echo "$TEMP >= $HOT_TEMP" | bc` -eq 1 ]; then
-        TEMP="%{F$COLOR_HOT}%{T$TEMP_FONT_CODE}%{T-}%{F-} $COLOR_TEXT_BEGIN$TEMP%{T$TEMP_FONT_CODE}$TEMP_ICON%{T-}$COLOR_TEXT_END"
+        TEMP="%{T$TEMP_FONT_CODE}%{T-} $COLOR_TEXT_BEGIN$TEMP%{T$TEMP_FONT_CODE}$TEMP_ICON%{T-}$COLOR_TEXT_END"
     else
-        TEMP="%{F$COLOR_NORMAL_TEMP}%{T$TEMP_FONT_CODE}%{T-}%{F-} $COLOR_TEXT_BEGIN$TEMP%{T$TEMP_FONT_CODE}$TEMP_ICON%{T-}$COLOR_TEXT_END"
+        TEMP="%{T$TEMP_FONT_CODE}%{T-} $COLOR_TEXT_BEGIN$TEMP%{T$TEMP_FONT_CODE}$TEMP_ICON%{T-}$COLOR_TEXT_END"
     fi
 }
 
 function outputCompact {
-    OUTPUT="$WIND %{T$WEATHER_FONT_CODE}%{F$ICON_COLOR}$ICON%{F-}%{T-} $ERR_MSG$COLOR_TEXT_BEGIN$DESCRIPTION$COLOR_TEXT_END| $TEMP"
+    OUTPUT="$WIND %{T$WEATHER_FONT_CODE}$ICON%{T-} $ERR_MSG$COLOR_TEXT_BEGIN$DESCRIPTION$COLOR_TEXT_END| $TEMP"
     # echo "Output: $OUTPUT" >> "$HOME/.weather.log"
     echo "$OUTPUT"
 }
