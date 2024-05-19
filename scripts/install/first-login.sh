@@ -39,6 +39,11 @@ rm -rf jetbrains-toolbox* sha256sum.txt
 # clean up
 sudo rm -rf ~/dotfiles
 
+# configure flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak --user override --filesystem=/home/$USER/.icons/:ro
+flatpak --user override --filesystem=/usr/share/icons/:ro
+
 # set gpg directory permissions
 sudo chown -R $(whoami) ~/.gnupg/
 chmod 600 ~/.gnupg/*
