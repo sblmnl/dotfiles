@@ -69,3 +69,10 @@ rm -rf .config/gtk-3.0/bookmarks
 
 # rice themes
 cp -r ~/.rice ../
+
+# app shortcuts
+if [ ! -d "../.local/share/applications" ]; then
+    mkdir ../.local/share/applications
+fi
+
+cp -r ~/.local/share/applications ../.local/share

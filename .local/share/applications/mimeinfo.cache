@@ -1,0 +1,4 @@
+[MIME Cache]
+x-scheme-handler/eclipse+command=_usr_share_dbeaver-ce_.desktop;
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop;
+x-scheme-handler/spotify=spotify.desktop;
