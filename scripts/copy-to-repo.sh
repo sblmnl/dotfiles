@@ -53,6 +53,9 @@ fi
 cp ~/.config/cmus/rc ../.config/cmus/
 cp ~/.config/cmus/*.theme ../.config/cmus/
 
+# pulsemeeter
+cp -r ~/.config/pulsemeeter ../.config/
+
 # fonts
 tar cvzf ../.fonts.tar.gz -C ~/.fonts ~/.fonts/*
 
