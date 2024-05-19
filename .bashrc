@@ -32,13 +32,6 @@ plugins=(
 
 source "$OSH"/oh-my-bash.sh
 
-#    ___       __  __
-#   / _ \___ _/ /_/ /
-#  / ___/ _ `/ __/ _ \
-# /_/   \_,_/\__/_//_/
-
-export PATH=$PATH:/home/$USER/.local/bin
-
 #  _   __         _      __   __
 # | | / /__ _____(_)__ _/ /  / /__ ___
 # | |/ / _ `/ __/ / _ `/ _ \/ / -_|_-<
@@ -106,22 +99,15 @@ alias drmvaf="docker volume rm -f \$(docker volume ls -q)"
 
 # python
 alias py="/home/$USER/.python/bin/python3"
-alias pip="/home/$USER/.python/pip"
+alias pip="/home/$USER/.python/bin/pip"
 
 # vpn on/off
 alias vpnc="mullvad lockdown-mode set on && mullvad connect"
 alias vpnd="mullvad lockdown-mode set off && mullvad disconnect"
 alias vpnr="mullvad reconnect"
 
-# appgate on/off
-alias agon="sudo systemctl stop plexmediaserver && killall librewolf && killall brave-browser && mullvad lockdown-mode set off && mullvad disconnect && sudo systemctl start appgatedriver"
-alias agoff="sudo systemctl stop appgatedriver && killall Appgate"
-
 # set wallpaper
 alias setwal="feh --bg-fill"
-
-# get new motd
-alias motd="clear && cat ~/.motd/$MOTD_THEME/\$(\ls ~/.motd/$MOTD_THEME  | shuf -n 1)"
 
 # apps
 alias mus="cmus"
