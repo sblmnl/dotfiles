@@ -25,7 +25,8 @@ apt install -y \
     unzip \
     calc \
     jq \
-    bc
+    bc \
+    python3-full
 
 # add me to sudoers
 usermod -aG sudo jared
