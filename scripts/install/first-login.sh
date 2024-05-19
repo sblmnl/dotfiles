@@ -5,7 +5,12 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/mast
 
 # setup python virtual environment
 python3 -m venv ~/.python
+
+# install autotiling
 ~/.python/bin/pip install autotiling
+
+# install pulsemeeter
+~/.python/bin/pip install pulsemeeter
 
 # import dotfiles
 cp .bashrc ~/
@@ -38,6 +43,11 @@ rm -rf jetbrains-toolbox* sha256sum.txt
 
 # clean up
 sudo rm -rf ~/dotfiles
+
+# configure flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak --user override --filesystem=/home/$USER/.icons/:ro
+flatpak --user override --filesystem=/usr/share/icons/:ro
 
 # set gpg directory permissions
 sudo chown -R $(whoami) ~/.gnupg/

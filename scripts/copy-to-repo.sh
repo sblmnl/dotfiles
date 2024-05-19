@@ -53,6 +53,9 @@ fi
 cp ~/.config/cmus/rc ../.config/cmus/
 cp ~/.config/cmus/*.theme ../.config/cmus/
 
+# pulsemeeter
+cp -r ~/.config/pulsemeeter ../.config/
+
 # fonts
 tar cvzf ../.fonts.tar.gz -C ~/.fonts ~/.fonts/*
 
@@ -69,3 +72,10 @@ rm -rf .config/gtk-3.0/bookmarks
 
 # rice themes
 cp -r ~/.rice ../
+
+# app shortcuts
+if [ ! -d "../.local/share/applications" ]; then
+    mkdir ../.local/share/applications
+fi
+
+cp -r ~/.local/share/applications ../.local/share

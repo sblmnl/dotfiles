@@ -7,3 +7,7 @@ xset dpms 0 0 960
 
 # restore wallpaper
 ~/.fehbg &
+
+# start pulsemeeter
+~/.python/bin/pulsemeeter init
+~/.python/bin/pulsemeeter daemon & disown
