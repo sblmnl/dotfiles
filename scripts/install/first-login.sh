@@ -5,7 +5,12 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/mast
 
 # setup python virtual environment
 python3 -m venv ~/.python
+
+# install autotiling
 ~/.python/bin/pip install autotiling
+
+# install pulsemeeter
+~/.python/bin/pip install pulsemeeter
 
 # import dotfiles
 cp .bashrc ~/
