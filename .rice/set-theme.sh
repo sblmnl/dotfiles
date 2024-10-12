@@ -1,3 +1,5 @@
+#!/bin/bash
+
 location=~/.rice/themes
 options=$(ls $location)
 

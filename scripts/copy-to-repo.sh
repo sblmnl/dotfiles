@@ -14,10 +14,10 @@ if [ ! -d "../.rice" ]; then
 fi
 
 # profile
-cp ~/.profile ../
+cp ~/.zprofile ../
 
 # bashrc
-cp ~/.bashrc ../
+cp ~/.zshrc ../
 
 # xprofile
 cp ~/.xprofile ../
@@ -79,3 +79,6 @@ if [ ! -d "../.local/share/applications" ]; then
 fi
 
 cp -r ~/.local/share/applications ../.local/share
+rm ../.local/share/jetbrains-rider* \
+    ../.local/share/mimeapps.list \
+    ../.local/share/mimeinfo.cache

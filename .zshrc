@@ -1,36 +1,14 @@
-# Enable the subsequent settings only in interactive sessions
-case $- in
-  *i*) ;;
-    *) return;;
-esac
-
-#   ____  __     __  ___       ___           __
-#  / __ \/ /    /  |/  /_ __  / _ )___ ____ / /
-# / /_/ / _ \  / /|_/ / // / / _  / _ `(_-</ _ \
-# \____/_//_/ /_/  /_/\_, / /____/\_,_/___/_//_/
+#   ____  __     __  ___       ____      __
+#  / __ \/ /    /  |/  /_ __  /_  / ___ / /
+# / /_/ / _ \  / /|_/ / // /   / /_(_-</ _ \
+# \____/_//_/ /_/  /_/\_, /   /___/___/_//_/
 #                    /___/
 
-export OSH=/home/$USER/.oh-my-bash
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="sorin"
+plugins=(git)
 
-OSH_THEME="agnoster"
-OMB_USE_SUDO=true
-
-completions=(
-  git
-  composer
-  ssh
-)
-
-aliases=(
-  general
-)
-
-plugins=(
-  git
-  bashmarks
-)
-
-source "$OSH"/oh-my-bash.sh
+source $ZSH/oh-my-zsh.sh
 
 #  _   __         _      __   __
 # | | / /__ _____(_)__ _/ /  / /__ ___
@@ -96,6 +74,9 @@ alias drmv="docker volume rm"
 alias drmvf="docker volume rm -f"
 alias drmva="docker volume rm \$(docker volume ls -q)"
 alias drmvaf="docker volume rm -f \$(docker volume ls -q)"
+
+# kubectl
+alias k="kubectl"
 
 # python
 alias py="/home/$USER/.python/bin/python3"

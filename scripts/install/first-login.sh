@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-# install oh my bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+# install oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # setup python virtual environment
 python3 -m venv ~/.python
@@ -13,8 +13,8 @@ python3 -m venv ~/.python
 ~/.python/bin/pip install pulsemeeter
 
 # import dotfiles
-cp .bashrc ~/
-cp .profile ~/
+cp .zshrc ~/
+cp .zprofile ~/
 cp .xprofile ~/
 
 cp -r .config ~/
@@ -30,9 +30,9 @@ firefox && sleep 3 && killall firefox
 pkcs11-register
 
 # install jetbrains toolbox
-curl -fsSLo jetbrains-toolbox.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.3.1.31116.tar.gz
+curl -fsSLo jetbrains-toolbox.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.4.2.32922.tar.gz
 cat <<EOF > sha256sum.txt
-005329f5c8ef9c29486a6992a93bdd5681dd19e9b4cd89286e91f626ac70b382 *jetbrains-toolbox.tar.gz
+84c3512040971d69eb3f249f1f2e058fefb3111970f4189dc84157d0434b2018 *jetbrains-toolbox.tar.gz
 EOF
 sha256sum -c sha1sum.txt --status \
     && tar xvf jetbrains-toolbox.tar.gz \

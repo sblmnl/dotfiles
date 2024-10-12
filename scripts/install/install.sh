@@ -17,6 +17,7 @@ cd $LOCATION
 ./core/graphics.sh
 ./core/audio.sh
 ./core/gui.sh
+./core/shell.sh
 
 # install apps
 for app in $(ls -a ./apps); do
@@ -31,9 +32,7 @@ done
 cp ./first-login.sh /home/jared/
 
 # set profile to run first login script on first login
-cat <<EOF > /home/jared/.xprofile
-#!/bin/bash
-
+cat <<EOF > /home/jared/.zprofile
 if [ \`last \$USER | wc -l\` -lt 2 ]; then
   ~/first-login.sh
   rm first-login.sh
