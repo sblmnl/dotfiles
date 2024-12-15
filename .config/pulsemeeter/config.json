@@ -12,7 +12,7 @@
 		},
 		"2": {
 			"name": "alsa_output.pci-0000_0b_00.3.analog-stereo",
-			"vol": 100,
+			"vol": 50,
 			"mute": false,
 			"eq_control": "",
 			"eq_name": "",
@@ -21,7 +21,7 @@
 			"jack_channels": []
 		},
 		"3": {
-			"name": "",
+			"name": "alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y7PF75N038EEE2-00.analog-stereo",
 			"vol": 100,
 			"mute": false,
 			"eq_control": "",
@@ -147,7 +147,7 @@
 			"a2": false,
 			"a3": false,
 			"b1": false,
-			"b2": false,
+			"b2": true,
 			"b3": false,
 			"a1_latency": 200,
 			"a2_latency": 200,
@@ -156,7 +156,7 @@
 			"b2_latency": 200,
 			"b3_latency": 200,
 			"mute": false,
-			"vol": 100,
+			"vol": 50,
 			"eq_control": "",
 			"eq_name": "",
 			"use_eq": false,
@@ -222,7 +222,7 @@
 		"output_groups": {}
 	},
 	"enable_vumeters": true,
-	"cleanup": false,
+	"cleanup": true,
 	"tray": true,
 	"layout": "default",
 	"version": "1.2.14"
