@@ -52,7 +52,7 @@ alias dc="docker compose"
 alias dcp="docker compose --profile"
 alias dps="docker ps -a"
 alias dpsw="watch -n 2 docker ps -a"
-alias dnuke="docker stop \$(docker ps -a -q); docker rm -f \$(docker ps -a -q); docker rmi -f \$(docker images -a -q); docker volume rm -f \$(docker volume ls -q)"
+alias dnuke="docker system prune -a -f --volumes"
 
 ## containers
 alias dstop="docker stop"
@@ -76,7 +76,11 @@ alias drmva="docker volume rm \$(docker volume ls -q)"
 alias drmvaf="docker volume rm -f \$(docker volume ls -q)"
 
 # kubectl
-alias k="kubectl"
+alias kubectl="minikube kubectl --"
+alias k="minikube kubectl --"
+
+# helm
+alias h="helm"
 
 # python
 alias py="/home/$USER/.python/bin/python3"
@@ -93,3 +97,7 @@ alias setwal="feh --bg-fill"
 # apps
 alias mus="cmus"
 alias cal="calcurse"
+
+# caffeine
+alias caf="xset s off && xset -dpms && touch /home/$USER/.caffeine"
+alias decaf="xset dpms 0 900 1200 && rm /home/$USER/.caffeine"

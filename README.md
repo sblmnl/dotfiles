@@ -22,7 +22,7 @@ Get dotfiles for a specific branch:
 | **Component**       | **Product**           |
 |---------------------|-----------------------|
 | **OS**              | Debian 12 (bookworm)  |
-| **Shell**           | Bash (Oh My Bash)     |
+| **Shell**           | Zsh (Oh My Zsh)       |
 | **Display Manager** | Ly                    |
 | **DE/WM**           | i3                    |
 | **Terminal**        | kitty                 |

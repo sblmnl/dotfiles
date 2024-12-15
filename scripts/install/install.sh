@@ -28,19 +28,8 @@ for app in $(ls -a ./apps); do
     ./apps/$app
 done
 
-# copy first login script to my home folder
-cp ./first-login.sh /home/jared/
-
-# set profile to run first login script on first login
-cat <<EOF > /home/jared/.zprofile
-if [ \`last \$USER | wc -l\` -lt 2 ]; then
-  ~/first-login.sh
-  rm first-login.sh
-fi
-EOF
-
-chown -R jared /home/jared/.xprofile
-chmod +rwx /home/jared/.xprofile
+# copy user install script to my home folder
+cp ./user-install.sh /home/jared/
 
 # move dotfiles to my home folder
 mv ~/dotfiles /home/jared/

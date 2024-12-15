@@ -12,7 +12,7 @@
 		},
 		"2": {
 			"name": "alsa_output.pci-0000_0b_00.3.analog-stereo",
-			"vol": 100,
+			"vol": 50,
 			"mute": false,
 			"eq_control": "",
 			"eq_name": "",
@@ -222,7 +222,7 @@
 		"output_groups": {}
 	},
 	"enable_vumeters": true,
-	"cleanup": false,
+	"cleanup": true,
 	"tray": true,
 	"layout": "default",
 	"version": "1.2.14"
