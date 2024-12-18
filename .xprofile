@@ -9,4 +9,4 @@ rm ~/.caffeine
 
 # start pulsemeeter
 ~/.python/bin/pulsemeeter init
-~/.python/bin/pulsemeeter daemon > /dev/null 2>&1 &
+~/.python/bin/pulsemeeter daemon > /dev/null 2>&1 & 
