@@ -72,6 +72,15 @@ cp -r ~/.config/gtk-2.0 .config/
 cp -r ~/.config/gtk-3.0 .config/
 rm -rf .config/gtk-3.0/bookmarks
 
+# gtk themes list
+\ls ~/.themes > themes.txt
+
+# icons list
+\ls ~/.icons > icons.txt
+
+# fonts list
+\ls ~/.fonts > fonts.txt
+
 # rice themes
 cp -r ~/.rice ./
 
