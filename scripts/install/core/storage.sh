@@ -1,15 +1,17 @@
 #!/bin/bash
 
-# configure lvm
-lvreduce -r -L 750G /dev/system-vg/home
-lvextend -r -L 128G /dev/system-vg/root
+VG="$(hostname)-vg"
 
-swapoff -v /dev/system-vg/swap_1
-lvresize /dev/system-vg/swap_1 -L 16G
-mkswap /dev/system-vg/swap_1
+# configure lvm
+lvreduce -r -L 750G /dev/$VG/home
+lvextend -r -L 128G /dev/$VG/root
+
+swapoff -v /dev/$VG/swap_1
+lvresize /dev/$VG/swap_1 -L 16G
+mkswap /dev/$VG/swap_1
 swapon -va
 
-lvextend -r -l +100%FREE /dev/system-vg/home
+lvextend -r -l +100%FREE /dev/$VG/home
 
 # configure auto-mount for encrypted drive
 DISK_ID="88a6b901-6969-4f4f-a3c2-e91ec860d86b"

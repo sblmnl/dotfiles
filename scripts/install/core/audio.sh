@@ -23,4 +23,6 @@ EOF
 
 sha256sum -c sha256sum.txt --status && dpkg -i gir1.2-appindicator3-0.1.deb
 
+apt --fix-broken install -y
+
 rm sha256sum.txt gir1.2-appindicator3-0.1.deb

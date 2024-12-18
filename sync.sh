@@ -2,9 +2,8 @@
 
 CURRENT_DIR=$(pwd)
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-REPO_DIR="$SCRIPT_DIR/.."
 
-cd $REPO_DIR
+cd $SCRIPT_DIR
 
 # create directories
 if [ ! -d ".config" ]; then
@@ -19,10 +18,10 @@ if [ ! -d ".rice" ]; then
     mkdir .rice
 fi
 
-# profile
+# zprofile
 cp ~/.zprofile ./
 
-# bashrc
+# zshrc
 cp ~/.zshrc ./
 
 # xprofile
@@ -30,6 +29,12 @@ cp ~/.xprofile ./
 
 # i3
 cp -r ~/.config/i3 .config/
+
+# picom
+cp ~/.config/picom.conf .config/
+
+# mimeapps
+cp ~/.config/mimeapps.list .config/
 
 # kitty
 cp -r ~/.config/kitty .config/
@@ -63,13 +68,13 @@ cp ~/.config/cmus/*.theme .config/cmus/
 cp -r ~/.config/pulsemeeter .config/
 
 # fonts
-tar cvzf .fonts.tar.gz -C ~/.fonts ~/.fonts/*
+tar czf .fonts.tar.gz -C ~/.fonts ~/.fonts/*
 
 # themes
-tar cvzf .themes.tar.gz -C ~/.themes ~/.themes/*
+tar czf .themes.tar.gz -C ~/.themes ~/.themes/*
 
 # icons
-tar cvzf .icons.tar.gz -C ~/.icons ~/.icons/*
+tar czf .icons.tar.gz -C ~/.icons ~/.icons/*
 
 # gtk
 cp -r ~/.config/gtk-2.0 .config/
