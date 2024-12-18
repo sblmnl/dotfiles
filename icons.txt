@@ -1,0 +1,9 @@
+Catppuccin-SE
+default
+Everforest-Dark
+Gruvbox-Dark
+Sweet-cursors
+Tela-circle
+Tela-circle-dracula
+Tela-circle-dracula-dark
+Tela-nord

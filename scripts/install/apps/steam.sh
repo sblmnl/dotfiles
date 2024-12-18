@@ -1,3 +1,3 @@
 #!/bin/sh
 
-flatpak --system install flathub com.valvesoftware.Steam
+flatpak --system install -y flathub com.valvesoftware.Steam
