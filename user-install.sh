@@ -21,10 +21,6 @@ cp -r .config ~/
 cp -r .local ~/
 cp -r .rice ~/
 
-tar xvf .fonts.tar.gz --strip-components=2 -C ~/
-tar xvf .icons.tar.gz --strip-components=2 -C ~/
-tar xvf .themes.tar.gz --strip-components=2 -C ~/
-
 cd ~/
 rm -rf $SCRIPT_DIR
 

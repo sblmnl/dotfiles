@@ -67,15 +67,6 @@ cp ~/.config/cmus/*.theme .config/cmus/
 # pulsemeeter
 cp -r ~/.config/pulsemeeter .config/
 
-# fonts
-tar czf .fonts.tar.gz -C ~/.fonts ~/.fonts/*
-
-# themes
-tar czf .themes.tar.gz -C ~/.themes ~/.themes/*
-
-# icons
-tar czf .icons.tar.gz -C ~/.icons ~/.icons/*
-
 # gtk
 cp -r ~/.config/gtk-2.0 .config/
 cp -r ~/.config/gtk-3.0 .config/
