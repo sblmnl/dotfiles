@@ -101,3 +101,7 @@ alias cal="calcurse"
 # caffeine
 alias caf="xset s off && xset -dpms && touch /home/$USER/.caffeine"
 alias decaf="xset dpms 0 900 1200 && rm /home/$USER/.caffeine"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -12,6 +12,9 @@ python3 -m venv ~/.python
 # install pulsemeeter
 ~/.python/bin/pip install pulsemeeter
 
+# install protonup
+~/.python/bin/pip install protonup
+
 # import dotfiles
 cp .zshrc ~/
 cp .zprofile ~/
@@ -38,9 +41,13 @@ sha256sum -c sha256sum.txt --status \
 rm -rf jetbrains-toolbox* sha256sum.txt
 
 # configure flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak --user override --filesystem=/home/$USER/.icons/:ro
 flatpak --user override --filesystem=/usr/share/icons/:ro
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# install flatpaks
+flatpak install -y flathub com.valvesoftware.Steam
+flatpak install -y org.freedesktop.Platform.GL32.nvidia-535-183-01
 
 # install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
