@@ -21,8 +21,6 @@ EOF
 
 checksum_status=$(sha256sum -c sha256sum.txt --status && echo "good" || echo "bad")
 
-
-
 if [ $checksum_status = "good" ]; then
     tar xf zig.tar.xz
     tar xf ly.tar.gz
