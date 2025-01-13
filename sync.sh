@@ -18,11 +18,20 @@ if [ ! -d ".rice" ]; then
     mkdir .rice
 fi
 
+# shellrc
+cp ~/.shellrc ./
+
 # zprofile
 cp ~/.zprofile ./
 
 # zshrc
 cp ~/.zshrc ./
+
+# profile
+cp ~/.profile ./
+
+# bashrc
+cp ~/.bashrc ./
 
 # xprofile
 cp ~/.xprofile ./
@@ -32,6 +41,9 @@ cp -r ~/.config/i3 .config/
 
 # picom
 cp ~/.config/picom.conf .config/
+
+# user dirs
+cp ~/.config/user-dirs.dirs .config/
 
 # mimeapps
 cp ~/.config/mimeapps.list .config/
