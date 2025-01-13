@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat <<EOF > /etc/networking/interfaces
+cat <<EOF > /etc/network/interfaces
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
