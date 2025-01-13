@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$CURRENT_USER=$(id -u -n)
+CURRENT_USER=$(id -u -n)
 if [ $CURRENT_USER != "root" ]; then
     echo "You must be the logged in as root to run this script!"
     exit 1

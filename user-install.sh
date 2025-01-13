@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 cd $SCRIPT_DIR
@@ -16,8 +16,11 @@ python3 -m venv ~/.python
 ~/.python/bin/pip install protonup
 
 # import dotfiles
+cp .shellrc ~/
 cp .zshrc ~/
+cp .bashrc ~/
 cp .zprofile ~/
+cp .profile ~/
 cp .xprofile ~/
 
 cp -r .config ~/
