@@ -3,7 +3,7 @@
 # add apt repositories
 apt update && apt upgrade -y
 apt install -y software-properties-common
-apt-add-repository contrib non-free non-free-firmware
+apt-add-repository -y contrib non-free non-free-firmware
 apt update && apt upgrade -y
 
 # set apt keyring permissions
