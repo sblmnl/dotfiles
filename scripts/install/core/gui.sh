@@ -6,7 +6,8 @@ apt install -y \
     i3 \
     rofi \
     polybar \
-    picom
+    picom \
+    xdg-user-dirs-gtk
 
 # install fairyglade/ly
 apt install -y libpam0g-dev libxcb-xkb-dev
@@ -25,20 +26,15 @@ if [ $checksum_status = "good" ]; then
     tar xf zig.tar.xz
     tar xf ly.tar.gz
 
-    path_original="$PATH"
-    export PATH="$pwd/zig-linux-x86_64-0.12.1:$PATH"
-
     cd ly-1.0.2
-    zig build
-    zig build installsystemd
+    ../zig-linux-x86_64-0.12.1/zig build
+    ../zig-linux-x86_64-0.12.1/zig build installsystemd
     systemctl enable ly.service
 
     cd ..
-    export PATH="$path_original"
     rm -rf ly-1.0.2 zig-linux-x86_64-0.12.1
 else
     echo "ly/zig - failed checksum verification!" >> ~/install-errors.log
 fi
 
 rm sha256sum.txt zig.tar.xz ly.tar.gz
-
