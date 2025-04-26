@@ -1,15 +1,11 @@
 #!/bin/sh
 
-# hold kernel version
-# kernel=$(uname -r)
-# kernel_arch=$(echo $kernel | rev | cut -d '-' -f 1 | rev)
-# kernel_version=${kernel:0:$(calc ${#kernel}-${#platform}-1)}
-
-# apt-mark hold \
-#   linux-image-$kernel \
-#   linux-image-$kernel_arch \
-#   linux-headers-$kernel \
-#   linux-headers-$kernel_version-common
-
-# install nvidia
+# install nvidia driver
 apt install -y nvidia-driver
+
+# set monitor resolution
+cat <<EOF >> /etc/X11/xinit/xinitrc
+xrandr \
+    --output DP-4 --primary --mode 2560x1440 --rate 143.85 \
+    --output DP-2 --mode 2560x1440 --rate 143.85 --right-of DP-4
+EOF

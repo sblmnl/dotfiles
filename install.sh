@@ -21,23 +21,21 @@ cd $SCRIPT_DIR/scripts/install
 ./core/gui.sh
 ./core/shell.sh
 
-# install apps
-for app in $(ls -a ./apps); do
-    if [[ $app == "." || $app == ".." ]]; then
-        continue
-    fi
+function run_scripts() {
+    dir=$1
 
-    ./apps/$app
-done
+    for script in $(ls -a $dir); do
+        if [[ $script == "." || $script == ".." ]]; then
+            continue
+        fi
 
-# install extras
-for extra in $(ls -a ./extras); do
-    if [[ $extra == "." || $extra == ".." ]]; then
-        continue
-    fi
+        ./$dir/$script
+    done
+}
 
-    ./extras/$extra
-done
+run_scripts security
+run_scripts apps
+run_scripts extras
 
 cd ~/
 
