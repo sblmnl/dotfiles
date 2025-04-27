@@ -6,7 +6,7 @@ apt install -y \
     pavucontrol \
     playerctl
 
-# install pulsemeeter dependencies
+install pulsemeeter dependencies
 apt install -y \
     python3-pip \
     swh-plugins \

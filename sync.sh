@@ -36,6 +36,9 @@ cp ~/.bashrc ./
 # xprofile
 cp ~/.xprofile ./
 
+# fehbg
+cp ~/.xprofile ./
+
 # i3
 cp -r ~/.config/i3 .config/
 
@@ -76,9 +79,6 @@ fi
 cp ~/.config/cmus/rc .config/cmus/
 cp ~/.config/cmus/*.theme .config/cmus/
 
-# pulsemeeter
-cp -r ~/.config/pulsemeeter .config/
-
 # gtk
 cp -r ~/.config/gtk-2.0 .config/
 cp -r ~/.config/gtk-3.0 .config/
@@ -102,8 +102,6 @@ if [ ! -d ".local/share/applications" ]; then
 fi
 
 cp -r ~/.local/share/applications .local/share
-rm .local/share/applications/jetbrains-rider* \
-    .local/share/applications/mimeapps.list \
-    .local/share/applications/mimeinfo.cache
+rm .local/share/applications/jetbrains-rider* .local/share/applications/mime* 
 
 cd $CURRENT_DIR

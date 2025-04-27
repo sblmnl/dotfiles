@@ -17,7 +17,7 @@ lvextend -r -l +100%FREE /dev/$VG/home
 
 if [[ ! -d /etc/luks-keys ]]; then
     mkdir /etc/luks-keys
-    chmod /etc/luks-keys 700
+    chmod 700 /etc/luks-keys
 fi
 
 # /media/Home

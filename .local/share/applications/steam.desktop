@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Steam
-Exec=sh -c 'flatpak run com.valvesoftware.Steam'
-Icon=steam
-StartupWMClass=Steam

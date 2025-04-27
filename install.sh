@@ -7,7 +7,7 @@ if [ $CURRENT_USER != "root" ]; then
 fi
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-cd $SCRIPT_DIR/scripts/install
+cd $SCRIPT_DIR/scripts/install/root
 
 # core configuration
 ./core/storage.sh
@@ -21,25 +21,26 @@ cd $SCRIPT_DIR/scripts/install
 ./core/gui.sh
 ./core/shell.sh
 
-# install apps
-for app in $(ls -a ./apps); do
-    if [[ $app == "." || $app == ".." ]]; then
-        continue
-    fi
+function run_scripts() {
+    dir=$1
 
-    ./apps/$app
-done
+    for script in $(ls -a $dir); do
+        if [[ $script == "." || $script == ".." ]]; then
+            continue
+        fi
 
-# install extras
-for extra in $(ls -a ./extras); do
-    if [[ $extra == "." || $extra == ".." ]]; then
-        continue
-    fi
+        ./$dir/$script
+    done
+}
 
-    ./extras/$extra
-done
+run_scripts security
+run_scripts apps
+run_scripts extras
 
 cd ~/
+
+mv install-errors.log /home/jared/
+chown jared /home/jared/install-errors.log
 
 # move dotfiles to my home folder
 mv $SCRIPT_DIR /home/jared/dotfiles

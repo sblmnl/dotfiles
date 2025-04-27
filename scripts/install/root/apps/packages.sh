@@ -23,16 +23,10 @@ apt autoremove --purge -y zathura
 
 # cli utilities
 apt install -y \
-    neofetch \
     exa \
     htop \
     feh \
-    ranger \
-    cmatrix \
-    nload \
-    dstat \
-    cmus \
-    calcurse
+    cmus
 
 # install flatpak
 apt install -y flatpak

@@ -28,9 +28,6 @@ set $right "DP-2"
 # /___/\__/_/ /_/ .__/\__/___/
 #              /_/            
 
-# screen settings
-exec --no-startup-id xrandr --output DP-4 --primary --mode 2560x1440 --rate 143.85 --output DP-2 --mode 2560x1440 --rate 143.85 --right-of DP-4
-
 # auto screen lock
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 

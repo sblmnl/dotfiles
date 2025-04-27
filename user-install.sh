@@ -3,18 +3,6 @@
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 cd $SCRIPT_DIR
 
-# setup python virtual environment
-python3 -m venv ~/.python
-
-# install autotiling
-~/.python/bin/pip install autotiling
-
-# install pulsemeeter
-~/.python/bin/pip install pulsemeeter
-
-# install protonup
-~/.python/bin/pip install protonup
-
 # import dotfiles
 cp .shellrc ~/
 cp .zshrc ~/
@@ -27,30 +15,32 @@ cp -r .config ~/
 cp -r .local ~/
 cp -r .rice ~/
 
-cd ~/
-rm -rf $SCRIPT_DIR
+# update xdg user dirs
+xdg-user-dirs-update
+xdg-user-dirs-gtk-update
 
-# install jetbrains toolbox
-version="2.5.2.35332"
-curl -fsSLo jetbrains-toolbox.tar.gz https://download.jetbrains.com/toolbox/jetbrains-toolbox-$version.tar.gz
-cat <<EOF > sha256sum.txt
-18f03ce755dabc574b30d269162281ad7a472c139688bb101740933b59da0fd3 *jetbrains-toolbox.tar.gz
-EOF
-sha256sum -c sha256sum.txt --status \
-    && tar xvf jetbrains-toolbox.tar.gz \
-    && ./jetbrains-toolbox-$version/jetbrains-toolbox \
-    && sleep 10 \
-    && killall jetbrains-toolbox
-rm -rf jetbrains-toolbox* sha256sum.txt
+# setup python virtual environment
+python3 -m venv ~/.python
+
+# install autotiling
+./scripts/install/user/autotiling.sh
+
+# install pulsemeeter
+./scripts/install/user/pulsemeeter.sh
 
 # configure flatpak
 flatpak --user override --filesystem=/home/$USER/.icons/:ro
 flatpak --user override --filesystem=/usr/share/icons/:ro
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-# install flatpaks
+# install steam
 flatpak install -y flathub com.valvesoftware.Steam
-flatpak install -y org.freedesktop.Platform.GL32.nvidia-535-183-01
+
+# install proton ge
+./scripts/install/user/proton-ge.sh
 
 # install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+curl -fsSLo oh-my-zsh.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+clamscan --quiet oh-my-zsh.sh || echo "oh my zsh - malware detected!" >> ~/install-errors.log && rm oh-my-zsh.sh && exit 1
+./oh-my-zsh.sh
+rm oh-my-zsh.sh
