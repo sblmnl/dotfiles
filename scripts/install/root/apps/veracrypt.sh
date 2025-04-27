@@ -8,13 +8,17 @@ PKG_SIG_FILE_NAME="$PKG_FILE_NAME.sig"
 curl -fsSLo VeraCrypt_PGP_public_key.asc https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc && gpg --import VeraCrypt_PGP_public_key.asc
 
 # download signature
-curl -fsSLo $PKG_SIG_FILE_NAME https://launchpad.net/veracrypt/trunk/$PKG_VERSION/+download/$PKG_SIG_FILE_NAME
+curl -fsSLO https://launchpad.net/veracrypt/trunk/$PKG_VERSION/+download/$PKG_SIG_FILE_NAME
 
 # download package
-curl -fsSLo $PKG_FILE_NAME https://launchpad.net/veracrypt/trunk/$PKG_VERSION/+download/$PKG_FILE_NAME
+curl -fsSLO https://launchpad.net/veracrypt/trunk/$PKG_VERSION/+download/$PKG_FILE_NAME
 
-# verify signature and install package
-gpg --verify $PKG_FILE_NAME && dpkg -i $PKG_FILE_NAME
+# verify signature
+gpg --verify $PKG_FILE_NAME || echo "veracrypt - signature verification failed!" >> ~/install-errors.log && exit 1
+
+# install package
+apt install -y pcscd
+dpkg -i $PKG_FILE_NAME
 apt --fix-broken install -y
 
 # cleanup

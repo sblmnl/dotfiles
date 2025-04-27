@@ -9,21 +9,6 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # gpg tty
 export GPG_TTY=$(tty)
 
-# node version manager
-export NVM_DIR="$HOME/.nvm"
-
-
-#    ____        _      __
-#   / __/_______(_)__  / /____
-#  _\ \/ __/ __/ / _ \/ __(_-<
-# /___/\__/_/ /_/ .__/\__/___/
-#              /_/
-
-# node version manager
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 #    ___   ___
 #   / _ | / (_)__ ____ ___ ___
 #  / __ |/ / / _ `(_-</ -_|_-<
@@ -31,7 +16,7 @@ export NVM_DIR="$HOME/.nvm"
 
 alias ls="exa -lGx --color=always --group-directories-first --icons --git"
 alias lsdl="exa -lGx --color=always --group-directories-first --icons --git --sort=cr /home/$USER/Downloads"
-alias cddl="cd /home/$USER/Downloads"
+alias cddl="cd /media/Home/$USER/Downloads"
 alias svc="sudo systemctl"
 alias rb="sudo reboot"
 alias sd="sudo poweroff"
@@ -77,29 +62,6 @@ alias drmv="docker volume rm"
 alias drmvf="docker volume rm -f"
 alias drmva="docker volume rm \$(docker volume ls -q)"
 alias drmvaf="docker volume rm -f \$(docker volume ls -q)"
-
-# kubectl
-alias kubectl="minikube kubectl --"
-alias k="minikube kubectl --"
-
-# helm
-alias h="helm"
-
-# python
-alias py="/home/$USER/.python/bin/python3"
-alias pip="/home/$USER/.python/bin/pip"
-
-# vpn on/off
-alias vpnc="mullvad lockdown-mode set on && mullvad connect"
-alias vpnd="mullvad lockdown-mode set off && mullvad disconnect"
-alias vpnr="mullvad reconnect"
-
-# set wallpaper
-alias setwal="feh --bg-fill"
-
-# apps
-alias mus="cmus"
-alias cal="calcurse"
 
 # caffeine
 alias caf="xset s off && xset -dpms && touch /home/$USER/.caffeine"

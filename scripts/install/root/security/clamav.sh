@@ -21,6 +21,7 @@ ScanOnAccess yes
 OnAccessIncludePath /home
 OnAccessIncludePath /etc
 OnAccessIncludePath /var
+OnAccessIncludePath /mnt
 OnAccessIncludePath /media
 EOF
 

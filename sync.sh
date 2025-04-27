@@ -102,6 +102,6 @@ if [ ! -d ".local/share/applications" ]; then
 fi
 
 cp -r ~/.local/share/applications .local/share
-rm .local/share/applications/jetbrains-rider*
+rm .local/share/applications/jetbrains-rider* .local/share/applications/mime* 
 
 cd $CURRENT_DIR

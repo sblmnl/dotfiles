@@ -7,7 +7,7 @@ if [ $CURRENT_USER != "root" ]; then
 fi
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-cd $SCRIPT_DIR/scripts/install
+cd $SCRIPT_DIR/scripts/install/root
 
 # core configuration
 ./core/storage.sh
@@ -38,6 +38,9 @@ run_scripts apps
 run_scripts extras
 
 cd ~/
+
+mv install-errors.log /home/jared/
+chown jared /home/jared/install-errors.log
 
 # move dotfiles to my home folder
 mv $SCRIPT_DIR /home/jared/dotfiles
