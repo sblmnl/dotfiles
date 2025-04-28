@@ -14,7 +14,7 @@ curl -fsSLO https://launchpad.net/veracrypt/trunk/$PKG_VERSION/+download/$PKG_SI
 curl -fsSLO https://launchpad.net/veracrypt/trunk/$PKG_VERSION/+download/$PKG_FILE_NAME
 
 # verify signature
-gpg --verify $PKG_FILE_NAME || echo "veracrypt - signature verification failed!" >> ~/install-errors.log && exit 1
+gpg --verify $PKG_SIG_FILE_NAME || echo "veracrypt - signature verification failed!" >> ~/install-errors.log && exit 1
 
 # install package
 apt install -y pcscd
