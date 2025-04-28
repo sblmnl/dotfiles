@@ -34,7 +34,11 @@ flatpak --user override --filesystem=/usr/share/icons/:ro
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # install steam
+# install steam
 flatpak install -y flathub com.valvesoftware.Steam
+
+# install proton ge
+./scripts/install/user/proton-ge.sh
 
 # install proton ge
 ./scripts/install/user/proton-ge.sh
