@@ -6,8 +6,15 @@ cat <<EOF > sha256sum.txt
 3270a28de977f375c80984ef50f7433cb03cfdf198b079ae9c80d1513f0e9176  autotiling.tar.gz
 EOF
 
-sha256sum -c sha256sum.txt --status \
-    || echo "autotiling - checksum verification failed!" >> ~/install-errors.log && rm -rf autotiling.tar.gz && exit 1
+checksum_status=$(sha256sum -c sha256sum.txt --status && echo "good" || echo "bad")
+
+rm sha256sum.txt
+
+if [ $checksum_status = "bad" ]; then
+    echo "autotiling - checksum verification failed!" >> ~/install-errors.log
+    rm autotiling.tar.gz
+    exit 1
+fi
 
 tar xf autotiling.tar.gz
 

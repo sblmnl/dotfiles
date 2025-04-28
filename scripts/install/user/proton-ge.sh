@@ -6,11 +6,18 @@ cat <<EOF > sha256sum.txt
 bbd3108ba8dcf173dd2a60ef4eb1b8d07e0fb3c9a1061b5b9310c5355c151937  proton-ge.tar.gz
 EOF
 
-sha256sum -c sha256sum.txt --status \
-    || echo "proton ge - checksum verification failed!" >> ~/install-errors.log && rm proton-ge.tar.gz && exit 1
+checksum_status=$(sha256sum -c sha256sum.txt --status && echo "good" || echo "bad")
 
-if [ ! -d "~/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/" ]; then
-    mkdir -p ~/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/
+rm sha256sum.txt
+
+if [ $checksum_status = "bad" ]; then
+    echo "proton ge - checksum verification failed!" >> ~/install-errors.log
+    rm proton-ge.tar.gz
+    exit 1
+fi
+
+if [ ! -d "~/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d" ]; then
+    mkdir -p ~/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d
 fi
 
 tar -xf proton-ge.tar.gz -C ~/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/

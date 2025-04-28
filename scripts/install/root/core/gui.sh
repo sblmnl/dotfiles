@@ -9,6 +9,11 @@ apt install -y \
     picom \
     xdg-user-dirs-gtk
 
+# set monitor resolution on xinit
+cat <<EOF >> /etc/X11/xinit/xinitrc
+xrandr --output DP-4 --primary --mode 2560x1440 --rate 143.85 --output DP-2 --mode 2560x1440 --rate 143.85 --right-of DP-4
+EOF
+
 # install fairyglade/ly
 apt install -y libpam0g-dev libxcb-xkb-dev
 
@@ -21,6 +26,8 @@ cat <<EOF > sha256sum.txt
 EOF
 
 checksum_status=$(sha256sum -c sha256sum.txt --status && echo "good" || echo "bad")
+
+rm sha256sum.txt
 
 if [ $checksum_status = "good" ]; then
     tar xf zig.tar.xz
@@ -37,4 +44,4 @@ else
     echo "ly/zig - failed checksum verification!" >> ~/install-errors.log
 fi
 
-rm sha256sum.txt zig.tar.xz ly.tar.gz
+rm zig.tar.xz ly.tar.gz
