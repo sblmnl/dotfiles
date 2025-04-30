@@ -46,5 +46,10 @@ chown jared /home/jared/install-errors.log
 mv $SCRIPT_DIR /home/jared/dotfiles
 chown -R jared /home/jared/dotfiles
 
+# set user install script to run on first login
+echo "./home/jared/dotfiles/user-install.sh" > /home/jared/.xprofile
+chmod +x /home/jared/.xprofile
+chown jared /home/jared/.xprofile
+
 # reboot
 reboot now

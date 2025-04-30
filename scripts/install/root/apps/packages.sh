@@ -17,7 +17,8 @@ apt install -y \
     libreoffice-writer \
     libreoffice-draw \
     gimp \
-    gpick
+    gpick \
+    keepassxc
 
 apt autoremove --purge -y zathura
 

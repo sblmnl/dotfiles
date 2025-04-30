@@ -1,5 +1,7 @@
-#!/bin/sh
+# install steam
+flatpak install -y flathub com.valvesoftware.Steam
 
+# install proton-ge
 curl -fsSLo proton-ge.tar.gz https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-27/GE-Proton9-27.tar.gz
 
 cat <<EOF > sha256sum.txt

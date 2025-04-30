@@ -9,11 +9,6 @@ apt install -y \
     picom \
     xdg-user-dirs-gtk
 
-# set monitor resolution on xinit
-cat <<EOF >> /etc/X11/xinit/xinitrc
-xrandr --output DP-4 --primary --mode 2560x1440 --rate 143.85 --output DP-2 --mode 2560x1440 --rate 143.85 --right-of DP-4
-EOF
-
 # install fairyglade/ly
 apt install -y libpam0g-dev libxcb-xkb-dev
 
