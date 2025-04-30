@@ -29,7 +29,7 @@ set $right "DP-2"
 #              /_/            
 
 # configure monitor resolution and refresh rate
-exec_always --no-startup-id xrandr --output DP-4 --primary --mode 2560x1440 --rate 143.85 --output DP-2 --mode 2560x1440 --rate 143.85 --right-of DP-4
+#exec --no-startup-id xrandr --output DP-4 --primary --mode 2560x1440 --rate 143.85 --output DP-2 --mode 2560x1440 --rate 143.85 --right-of DP-4
 
 # auto screen lock
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -87,29 +87,15 @@ bindsym $mod+Shift+Return exec --no-startup-id kitty su -
 bindsym $mod+space exec --no-startup-id thunar
 
 # open code editor
-bindsym $mod+semicolon exec --no-startup-id codium
+bindsym $mod+semicolon exec --no-startup-id code
 bindsym $mod+Shift+semicolon exec --no-startup-id ~/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh
 
-# open process manager
-bindsym $mod+p exec --no-startup-id kitty htop
-
 # open audio control panel
-bindsym $mod+a exec --no-startup-id pulsemeeter
-bindsym $mod+Shift+a exec --no-startup-id pavucontrol
-
-# open web browser
-bindsym $mod+b exec --no-startup-id librewolf
-bindsym $mod+Shift+b exec --no-startup-id librewolf --private-window
-bindsym $mod+n exec --no-startup-id brave-browser
-bindsym $mod+Shift+n exec --no-startup-id brave-browser --incognito
-bindsym $mod+m exec --no-startup-id firefox
-bindsym $mod+Shift+m exec --no-startup-id firefox --private-window
+bindsym $mod+a exec --no-startup-id pavucontrol
+#bindsym $mod+Shift+a exec --no-startup-id pulsemeeter
 
 # open app launcher
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun"
-
-# open zoom
-bindsym $mod+z exec --no-startup-id zoom
 
 # take screenshot
 bindsym Print exec --no-startup-id flameshot full -c
