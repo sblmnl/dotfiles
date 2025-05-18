@@ -16,6 +16,7 @@ export GPG_TTY=$(tty)
 
 alias ls="exa -lGx --color=always --group-directories-first --icons --git"
 alias lsdl="exa -lGx --color=always --group-directories-first --icons --git --sort=cr /home/$USER/Downloads"
+alias cdh="cd /media/Home/$USER"
 alias cddl="cd /media/Home/$USER/Downloads"
 alias svc="sudo systemctl"
 alias rb="sudo reboot"
