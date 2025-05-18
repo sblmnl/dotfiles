@@ -9,6 +9,7 @@ apt install -y \
 apt install -y \
     kitty \
     thunar \
+    xarchiver \
     flameshot \
     qimgv \
     vlc \

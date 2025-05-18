@@ -11,3 +11,7 @@ fi
 export PATH="/home/$USER/.python/bin:$PATH"
 export PATH="$PATH:/home/$USER/.dotnet/tools"
 export PATH="$PATH:/home/$USER/.local/share/JetBrains/Toolbox/scripts"
+
+. /home/$USER/.nvm/nvm.sh
+$node_version=$(nvm current)
+export PATH="$PATH:/home/$USER/.nvm/versions/node/$node_version/bin"
