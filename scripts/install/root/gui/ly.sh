@@ -1,14 +1,5 @@
 #!/bin/sh
 
-# install xorg, i3, rofi, polybar and picom
-apt install -y \
-    xorg \
-    i3 \
-    picom \
-    rofi \
-    polybar \
-    xdg-user-dirs-gtk
-
 # install fairyglade/ly
 apt install -y libpam0g-dev libxcb-xkb-dev
 

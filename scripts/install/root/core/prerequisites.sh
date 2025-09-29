@@ -2,9 +2,9 @@
 
 # add apt repositories
 apt update && apt upgrade -y
-apt install -y software-properties-common
-apt-add-repository -y contrib non-free non-free-firmware
-apt update && apt upgrade -y
+#apt install -y software-properties-common
+#apt-add-repository -y contrib non-free non-free-firmware
+#apt update && apt upgrade -y
 
 # set apt keyring permissions
 install -m 0755 -d /etc/apt/keyrings
@@ -12,6 +12,7 @@ install -m 0755 -d /etc/apt/keyrings
 # install prerequisite packages
 apt install -y \
     sudo \
+    linux-headers-$(uname -r) \
     build-essential \
     lsb-release \
     apt-transport-https \
