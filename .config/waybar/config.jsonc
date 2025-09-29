@@ -1,0 +1,17 @@
+{
+  "layer": "top",
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "height": 16,
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+
+  "modules-center": [],
+
+  "modules-right": [
+    "clock"
+  ]
+}
