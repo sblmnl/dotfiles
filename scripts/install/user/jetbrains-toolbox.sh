@@ -11,7 +11,7 @@ checksum_status=$(sha256sum -c sha256sum.txt --status && echo "good" || echo "ba
 rm sha256sum.txt
 
 if [ $checksum_status = "bad" ]; then
-    echo "jetbrains toolbox - checksum verification failed!" >> ~/install-errors.log
+    >&2 echo "[ERR] jetbrains toolbox - checksum verification failed!"
     rm jetbrains-toolbox.tar.gz
     exit 1
 fi
@@ -24,6 +24,3 @@ sleep 10
 killall jetbrains-toolbox
 
 rm -rf jetbrains-toolbox.tar.gz jetbrains-toolbox-2.6.1.40902
-
-mv ~/.profile.bak ~/.profile
-mv ~/.zprofile.bak ~/.zprofile

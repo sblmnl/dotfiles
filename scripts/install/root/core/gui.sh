@@ -4,9 +4,9 @@
 apt install -y \
     xorg \
     i3 \
+    picom \
     rofi \
     polybar \
-    picom \
     xdg-user-dirs-gtk
 
 # install fairyglade/ly
@@ -36,7 +36,7 @@ if [ $checksum_status = "good" ]; then
     cd ..
     rm -rf ly-1.0.2 zig-linux-x86_64-0.12.1
 else
-    echo "ly/zig - failed checksum verification!" >> ~/install-errors.log
+    >&2 echo "[ERR] ly/zig - failed checksum verification!"
 fi
 
 rm zig.tar.xz ly.tar.gz

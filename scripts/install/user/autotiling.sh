@@ -11,7 +11,7 @@ checksum_status=$(sha256sum -c sha256sum.txt --status && echo "good" || echo "ba
 rm sha256sum.txt
 
 if [ $checksum_status = "bad" ]; then
-    echo "autotiling - checksum verification failed!" >> ~/install-errors.log
+    >&2 echo "[ERR] autotiling - checksum verification failed!"
     rm autotiling.tar.gz
     exit 1
 fi

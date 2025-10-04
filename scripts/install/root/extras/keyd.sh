@@ -39,7 +39,7 @@ EOF
 
     cd ..
 else
-    echo "keyd - checksum verification failed!" >> ~/install-errors.log
+    >&2 echo "[ERR] keyd - checksum verification failed!"
 fi
 
 rm -rf keyd-$PKG_VERSION $PKG_FILE_NAME

@@ -28,8 +28,11 @@ set $right "DP-2"
 # /___/\__/_/ /_/ .__/\__/___/
 #              /_/            
 
-# configure monitor resolution and refresh rate
-#exec --no-startup-id xrandr --output DP-4 --primary --mode 2560x1440 --rate 143.85 --output DP-2 --mode 2560x1440 --rate 143.85 --right-of DP-4
+# picom
+exec --no-startup-id picom -b
+
+# login script
+exec --no-startup-id ~/.config/i3/on-login.sh
 
 # auto screen lock
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -37,14 +40,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # autotiling
 exec_always --no-startup-id ~/.python/bin/autotiling
 
-# picom
-exec --no-startup-id picom --config ~/.config/picom.conf -b
-
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-
-# login script
-exec --no-startup-id ~/.config/i3/on-login.sh
 
 #  _      ___         __             
 # | | /| / (_)__  ___/ /__ _    _____

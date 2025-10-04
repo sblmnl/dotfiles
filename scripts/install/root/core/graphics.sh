@@ -1,4 +1,7 @@
 #!/bin/sh
 
-# install nvidia driver
-apt install -y nvidia-driver
+apt install -y \
+    linux-headers-$(dpkg --print-architecture) \
+    nvidia-kernel-dkms \
+    nvidia-driver \
+    firmware-misc-nonfree
