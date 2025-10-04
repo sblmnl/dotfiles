@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# install nvidia driver
-#apt install -y nvidia-driver
-
 apt install -y \
-    nvidia-tesla-535-kernel-dkms \
-    nvidia-tesla-535-driver \
+    linux-headers-$(dpkg --print-architecture) \
+    nvidia-kernel-dkms \
+    nvidia-driver \
     firmware-misc-nonfree

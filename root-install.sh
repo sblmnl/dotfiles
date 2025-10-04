@@ -9,17 +9,11 @@ fi
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 cd $SCRIPT_DIR/scripts/install/root
 
-# core configuration
-./core/storage.sh
-./core/prerequisites.sh
-./core/grub.sh
-./core/hostname.sh
-./core/network.sh
-./core/clock.sh
-./core/graphics.sh
-./core/audio.sh
-./core/gui.sh
-./core/shell.sh
+function run_script() {
+    path=$1
+    echo "Executing script '$path'..."
+    ./$path >>~/install.log 2>>~/install-errors.log
+}
 
 function run_scripts() {
     dir=$1
@@ -29,27 +23,46 @@ function run_scripts() {
             continue
         fi
 
-        ./$dir/$script
+        run_script $dir/$script
     done
 }
 
+# run core configuration scripts
+run_script core/storage.sh
+run_script core/prerequisites.sh
+run_script core/grub.sh
+run_script core/hostname.sh
+run_script core/network.sh
+run_script core/clock.sh
+run_script core/graphics.sh
+run_script core/audio.sh
+run_script core/gui.sh
+run_script core/shell.sh
+
+# run configuration scripts by category
 run_scripts security
 run_scripts apps
+run_scripts dev
 run_scripts extras
 
+# move log files to user home directory
+mv ~/install*.log /home/jared/
+chown jared /home/jared/install*.log
+
+# print any logged installation errors
+cat ~/install-errors.log
+
+# move dotfiles to user home folder
 cd ~/
-
-mv install-errors.log /home/jared/
-chown jared /home/jared/install-errors.log
-
-# move dotfiles to my home folder
 mv $SCRIPT_DIR /home/jared/dotfiles
 chown -R jared /home/jared/dotfiles
 
-# set user install script to run on first login
-echo "./home/jared/dotfiles/user-install.sh" > /home/jared/.xprofile
-chmod +x /home/jared/.xprofile
-chown jared /home/jared/.xprofile
+# ask before rebooting
+read -p "Installation complete! Reboot now? (Y/n) " user_input
 
-# reboot
-reboot now
+if [ "${user_input,,}" = "y" ]; then
+    echo "Rebooting..."
+    reboot now
+fi
+
+echo "Exiting..."

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-pkg_version="1.26.20"
-pkg_file_name="veracrypt-$pkg_version-Debian-12-amd64.deb"
+pkg_version="1.26.24"
+pkg_file_name="veracrypt-$pkg_version-Debian-13-amd64.deb"
 pkg_sig_file_name="$pkg_file_name.sig"
 
 # download and import signing key
@@ -18,7 +18,7 @@ curl -fsSLO https://launchpad.net/veracrypt/trunk/$pkg_version/+download/$pkg_fi
 signature_status=$(gpg --verify $pkg_sig_file_name && echo "good" || echo "bad")
 
 if [ $signature_status = "bad" ]; then
-    echo "veracrypt - signature verification failed!" >> ~/install-errors.log
+    >&2 echo "[ERR] veracrypt - signature verification failed!"
     rm $pkg_file_name $pkg_sig_file_name
     exit 1
 fi

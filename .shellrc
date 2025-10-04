@@ -28,9 +28,6 @@ alias un="sudo apt purge --autoremove"
 alias up="sudo apt update && apt list --upgradeable"
 alias ug="sudo apt upgrade"
 
-# github
-alias gh="[ -z \"\$SSH_AUTH_SOCK\" ] && eval \"\$(ssh-agent -s)\" > /dev/null && ssh-add ~/.ssh/github"
-
 # git
 alias g="git"
 

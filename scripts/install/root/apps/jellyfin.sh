@@ -11,7 +11,7 @@ checksum_status=$(sha256sum -c sha256sum.txt --status)
 rm sha256sum.txt
 
 if [ $checksum_status = "bad" ]; then
-    echo "jellyfin - checksum verification failed!" >> ~/install-errors.log
+    >&2 echo "[ERR] jellyfin - checksum verification failed!"
     rm install-debuntu.sh
     exit 1
 fi
@@ -19,3 +19,6 @@ fi
 ./install-debuntu.sh
 
 rm install-debuntu.sh
+
+# allow inbound local traffic for jellyfin server
+ufw allow from 192.168.1.0/24 proto tcp to any port 8096

@@ -1,10 +1,18 @@
 #!/bin/sh
 
 # add apt repositories
+cat <<EOF > /etc/apt/sources.list
+deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+
+deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
+EOF
+
 apt update && apt upgrade -y
-#apt install -y software-properties-common
-#apt-add-repository -y contrib non-free non-free-firmware
-#apt update && apt upgrade -y
 
 # set apt keyring permissions
 install -m 0755 -d /etc/apt/keyrings
@@ -12,7 +20,6 @@ install -m 0755 -d /etc/apt/keyrings
 # install prerequisite packages
 apt install -y \
     sudo \
-    linux-headers-$(uname -r) \
     build-essential \
     lsb-release \
     apt-transport-https \

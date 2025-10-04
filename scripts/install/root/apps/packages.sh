@@ -14,14 +14,10 @@ apt install -y \
     qimgv \
     vlc \
     qbittorrent \
-    libreoffice-calc \
-    libreoffice-writer \
-    libreoffice-draw \
+    libreoffice \
     gimp \
     gpick \
     keepassxc
-
-apt autoremove --purge -y zathura
 
 # cli utilities
 apt install -y \
