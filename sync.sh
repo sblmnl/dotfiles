@@ -37,7 +37,7 @@ cp ~/.bashrc ./
 cp ~/.xprofile ./
 
 # fehbg
-cp ~/.xprofile ./
+cp ~/.fehbg ./
 
 # i3
 cp -r ~/.config/i3 .config/
@@ -70,6 +70,9 @@ cp -r ~/.config/dunst .config/
 
 # neofetch
 cp -r ~/.config/neofetch .config/
+
+# qbittorrent
+cp -r ~/.config/qBittorrent .config/
 
 # cmus
 if [ ! -d ".config/cmus" ]; then
