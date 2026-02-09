@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../.local/share/rofi/themes"
+		},
+		{
+			"path": "../.config/i3"
+		},
+		{
+			"path": "../.config/kitty"
+		},
+		{
+			"path": "../.config/rofi"
+		},
+		{
+			"path": "../.config/polybar"
+		}
+	],
+	"settings": {}
+}

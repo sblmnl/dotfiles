@@ -1,0 +1,11 @@
+# set system gtk theme
+export GTK_THEME=Kripton:dark
+
+# configure monitor resolution and refresh rate
+xrandr --output DP-4 --primary --mode 2560x1440 --rate 143.85 --output DP-2 --mode 2560x1440 --rate 143.85 --right-of DP-4
+
+# clear caffeine state
+rm ~/.caffeine
+
+# restore wallpaper
+~/.fehbg &

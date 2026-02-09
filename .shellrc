@@ -1,0 +1,67 @@
+#  _   __         _      __   __
+# | | / /__ _____(_)__ _/ /  / /__ ___
+# | |/ / _ `/ __/ / _ `/ _ \/ / -_|_-<
+# |___/\_,_/_/ /_/\_,_/_.__/_/\__/___/
+
+# disable dotnet cli telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# gpg tty
+export GPG_TTY=$(tty)
+
+#    ___   ___
+#   / _ | / (_)__ ____ ___ ___
+#  / __ |/ / / _ `(_-</ -_|_-<
+# /_/ |_/_/_/\_,_/___/\__/___/
+
+alias ls="exa -lGx --color=always --group-directories-first --icons --git"
+alias cdh="cd /media/Home/$USER"
+alias cddl="cd /media/Home/$USER/Downloads"
+alias svc="sudo systemctl"
+alias rb="sudo reboot"
+alias sd="sudo poweroff"
+alias cal="calcurse"
+alias mus="cmus"
+
+# apt
+alias in="sudo apt install"
+alias un="sudo apt purge --autoremove"
+alias up="sudo apt update && apt list --upgradeable"
+alias ug="sudo apt upgrade"
+
+# git
+alias g="git"
+
+# docker
+alias d="docker"
+alias docker-compose="docker compose"
+alias dc="docker compose"
+alias dcp="docker compose --profile"
+alias dps="docker ps -a"
+alias dpsw="watch -n 2 docker ps -a"
+alias dnuke="docker system prune -a -f --volumes"
+
+## containers
+alias dstop="docker stop"
+alias drm="docker rm"
+alias drmf="docker rm -f"
+alias drma="docker rm \$(docker ps -a -q)"
+alias drmaf="docker rm -f \$(docker ps -a -q)"
+
+## images
+alias dlsi="docker image ls"
+alias drmi="docker rmi"
+alias drmif="docker rmi -f"
+alias drmia="docker rmi \$(docker images -a -q)"
+alias drmiaf="docker rmi -f \$(docker images -a -q)"
+
+## volumes
+alias dlsv="docker volume ls"
+alias drmv="docker volume rm"
+alias drmvf="docker volume rm -f"
+alias drmva="docker volume rm \$(docker volume ls -q)"
+alias drmvaf="docker volume rm -f \$(docker volume ls -q)"
+
+# caffeine
+alias caf="xset s off && xset -dpms && touch /home/$USER/.caffeine"
+alias decaf="xset dpms 0 900 1200 && rm /home/$USER/.caffeine"

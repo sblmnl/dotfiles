@@ -1,0 +1,14 @@
+set $base #010409
+set $text #b1bac4
+set $urgent #ff7b72
+set $focused #58a6ff
+set $inactive #363c43
+set $unfocused #363c43
+
+# target                 title      bg    text       indicator  border
+client.focused           $focused   $base $focused   $focused   $focused
+client.focused_inactive  $inactive  $base $text      $inactive  $inactive
+client.unfocused         $unfocused $base $unfocused $unfocused $unfocused
+client.urgent            $urgent    $base $urgent    $urgent    $urgent
+client.placeholder       $unfocused $base $text      $base      $base
+client.background        $bg
