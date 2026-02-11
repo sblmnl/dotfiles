@@ -38,7 +38,7 @@ exec --no-startup-id ~/.config/i3/on-login.sh
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # autotiling
-exec_always --no-startup-id ~/.python/bin/autotiling
+exec_always --no-startup-id autotiling
 
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -93,7 +93,6 @@ bindsym $mod+e exec --no-startup-id thunar
 
 # open code editor
 bindsym $mod+semicolon exec --no-startup-id code
-bindsym $mod+Shift+semicolon exec --no-startup-id ~/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh
 
 # open audio control panel
 bindsym $mod+a exec --no-startup-id pavucontrol

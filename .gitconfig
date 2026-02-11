@@ -1,0 +1,16 @@
+[user]
+    email = sblmnl@users.noreply.github.com
+    name = sblmnl
+    signingkey = 5D592D3895C02F06
+
+[commit]
+    gpgsign = true
+
+[gpg "x509"]
+    program = gpgsm
+
+[push]
+    autoSetupRemote = true
+
+[init]
+    defaultBranch = main

@@ -1,0 +1,23 @@
+{
+    "explorer.compactFolders": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.mouseWheelZoom": true,
+    "window.menuStyle": "native",
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "window.titleBarStyle": "native",
+    "window.menuBarVisibility": "toggle",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.startupEditor": "none",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "extensions.ignoreRecommendations": true,
+    "[json]": {
+        "editor.tabSize": 2
+    },
+    "editor.fontFamily": "'Hurmit Nerd Font Mono', 'monospace', monospace",
+    "terminal.integrated.gpuAcceleration": "off",
+    "[vue]": {
+        "editor.tabSize": 2
+    }
+}
