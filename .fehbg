@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/jared/.dotfiles/.rice/wallpapers/merica_github-dark_2560x1440.png' 
